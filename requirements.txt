@@ -2,9 +2,12 @@
 streamlit
 
 # Data
+fastf1
 ## Import
+io
 pathlib
-
+urllib.request
+zipfile
 
 ## Wrangling
 pandas

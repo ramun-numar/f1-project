@@ -1,0 +1,20 @@
+year,round,race_name,driver_id,driver_name,constructor_id,qualifying_position,Q1,Q2,Q3,downloaded_at_utc
+2026,1,Australian Grand Prix,russell,George Russell,mercedes,1,1:19.507,1:18.934,1:18.518,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,antonelli,Andrea Kimi Antonelli,mercedes,2,1:20.120,1:19.435,1:18.811,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,hadjar,Isack Hadjar,red_bull,3,1:20.023,1:19.653,1:19.303,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,leclerc,Charles Leclerc,ferrari,4,1:20.226,1:19.357,1:19.327,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,piastri,Oscar Piastri,mclaren,5,1:19.664,1:19.525,1:19.380,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,norris,Lando Norris,mclaren,6,1:20.010,1:19.882,1:19.475,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,hamilton,Lewis Hamilton,ferrari,7,1:19.811,1:19.921,1:19.478,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,lawson,Liam Lawson,rb,8,1:20.491,1:20.144,1:19.994,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,arvid_lindblad,Arvid Lindblad,rb,9,1:20.409,1:19.971,1:21.247,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,bortoleto,Gabriel Bortoleto,audi,10,1:20.495,1:20.221,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,hulkenberg,Nico Hülkenberg,audi,11,1:21.024,1:20.303,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,bearman,Oliver Bearman,haas,12,1:21.247,1:20.311,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,ocon,Esteban Ocon,haas,13,1:20.759,1:20.491,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,gasly,Pierre Gasly,alpine,14,1:21.138,1:20.501,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,albon,Alexander Albon,williams,15,1:21.051,1:20.941,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,colapinto,Franco Colapinto,alpine,16,1:21.200,1:21.270,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,alonso,Fernando Alonso,aston_martin,17,1:21.969,,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,perez,Sergio Pérez,cadillac,18,1:22.605,,,2026-10-24T14:38:26.425178+00:00
+2026,1,Australian Grand Prix,bottas,Valtteri Bottas,cadillac,19,1:23.244,,,2026-10-24T14:38:26.425178+00:00

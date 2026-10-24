@@ -22,12 +22,14 @@ FILES = [
     "f1db-races.csv",
     "f1db-races-race-results.csv",
     "f1db-races-qualifying-results.csv",
+    "f1db-circuits.csv"
 ]
 
 # opens the URL, if it takes longer then 60s it will be aborted
 # as response declares how the server response is named: here its name is "response"
 with urlopen(URL, timeout=60) as response:
     zip_data = response.read()
+
 
 # BytesIO makes the response.read() information which is stored in bytes readable as zip file
 # ZipFile then saves the zip-archive under the name "archive"
