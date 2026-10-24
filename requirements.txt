@@ -1,0 +1,14 @@
+# App
+streamlit
+
+# Data
+## Import
+pathlib
+
+
+## Wrangling
+pandas
+
+
+# Modeling
+scikit-learn
