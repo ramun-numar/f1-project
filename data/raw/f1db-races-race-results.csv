@@ -27664,3 +27664,25 @@
 1166,2026,17,20,,"DNF","18","lance-stroll","aston-martin","honda","pirelli",false,36,,,,,,,,,,"Clutch",,false,19,"19",,"PL",,1,false,false,false
 1166,2026,17,21,,"DNF","43","franco-colapinto","alpine","mercedes","pirelli",false,29,,,,,,,,,,"Transmission",,false,16,"16",15,"15",,0,false,false,false
 1166,2026,17,22,,"DNF","5","gabriel-bortoleto","audi","audi","pirelli",false,7,,,,,,,,,,"Gearbox",,false,15,"15",14,"14",,0,false,false,false
+1167,2026,18,1,1,"1","12","kimi-antonelli","mercedes","mercedes","pirelli",false,56,"1:35:16.650",5716650,,,,,,,,,25,true,1,"1",1,"1",0,1,false,false,false
+1167,2026,18,2,2,"2","16","charles-leclerc","ferrari","ferrari","pirelli",false,56,"1:35:29.728",5729728,,,"+13.078",13078,,"+13.078",13078,,18,false,4,"4",4,"4",2,2,true,true,false
+1167,2026,18,3,3,"3","3","max-verstappen","red-bull","red-bull-ford","pirelli",false,56,"1:35:34.135",5734135,,,"+17.485",17485,,"+4.407",4407,,15,false,2,"2",2,"2",-1,2,false,false,false
+1167,2026,18,4,4,"4","44","lewis-hamilton","ferrari","ferrari","pirelli",false,56,"1:35:35.165",5735165,,,"+18.515",18515,,"+1.030",1030,,12,false,5,"5",5,"5",1,2,false,false,false
+1167,2026,18,5,5,"5","1","lando-norris","mclaren","mercedes","pirelli",false,56,"1:35:47.171",5747171,,,"+30.521",30521,,"+12.006",12006,,10,false,8,"8",8,"8",3,1,false,false,false
+1167,2026,18,6,6,"6","6","isack-hadjar","red-bull","red-bull-ford","pirelli",false,56,"1:35:51.023",5751023,,,"+34.373",34373,,"+3.852",3852,,8,false,3,"3",3,"3",-3,1,false,false,false
+1167,2026,18,7,7,"7","81","oscar-piastri","mclaren","mercedes","pirelli",false,56,"1:36:09.324",5769324,,,"+52.674",52674,,"+18.301",18301,,6,false,7,"7",7,"7",0,1,false,false,false
+1167,2026,18,8,8,"8","63","george-russell","mercedes","mercedes","pirelli",false,56,"1:36:10.953",5770953,,,"+54.303",54303,,"+1.629",1629,,4,false,6,"6",6,"6",-2,1,false,false,false
+1167,2026,18,9,9,"9","30","liam-lawson","racing-bulls","red-bull-ford","pirelli",false,56,"1:36:35.833",5795833,,,"+1:19.183",79183,,"+24.880",24880,,2,false,10,"10",9,"9",0,1,false,false,false
+1167,2026,18,10,10,"10","10","pierre-gasly","alpine","mercedes","pirelli",false,56,"1:36:44.166",5804166,,,"+1:27.516",87516,,"+8.333",8333,,1,false,11,"11",10,"10",0,1,false,false,false
+1167,2026,18,11,11,"11","27","nico-hulkenberg","audi","audi","pirelli",false,56,"1:36:51.595",5811595,,,"+1:34.945",94945,,"+7.429",7429,,,false,12,"12",11,"11",0,1,false,false,false
+1167,2026,18,12,12,"12","41","arvid-lindblad","racing-bulls","red-bull-ford","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,9,"9",14,"14",2,2,false,false,false
+1167,2026,18,13,13,"13","5","gabriel-bortoleto","audi","audi","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,13,"13",21,"21",8,2,false,false,false
+1167,2026,18,14,14,"14","31","esteban-ocon","haas","ferrari","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,17,"17",15,"15",1,1,false,false,false
+1167,2026,18,15,15,"15","18","lance-stroll","aston-martin","honda","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,18,"18",,"PL",7,2,false,false,false
+1167,2026,18,16,16,"16","14","fernando-alonso","aston-martin","honda","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,15,"15",12,"12",-4,2,false,false,false
+1167,2026,18,17,17,"17","23","alexander-albon","williams","mercedes","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,20,"20",17,"17",0,2,false,false,false
+1167,2026,18,18,18,"18","55","carlos-sainz-jr","williams","mercedes","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,19,"19",16,"16",-2,2,false,false,false
+1167,2026,18,19,19,"19","11","sergio-perez","cadillac","ferrari","pirelli",false,55,,,,,"+1 lap",,1,,,,,false,21,"21",18,"18",-1,1,false,false,false
+1167,2026,18,20,,"DNF","77","valtteri-bottas","cadillac","ferrari","pirelli",false,48,,,,,,,,,,"Engine",,false,22,"22",19,"19",,1,false,false,false
+1167,2026,18,21,,"DNF","43","franco-colapinto","alpine","mercedes","pirelli",false,35,,,,,,,,,,"Engine",,false,14,"14",20,"20",,1,false,false,false
+1167,2026,18,22,,"DNF","87","oliver-bearman","haas","ferrari","pirelli",false,24,,,,,,,,,,"Collision damage",,false,16,"16",13,"13",,2,false,false,false

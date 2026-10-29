@@ -1,0 +1,13 @@
+##### Problems #####
+
+
+F1db myb has no qualifying data for the current race weekend... -> get the information from jolpica
+
+
+updating still has to be done manually
+
+
+##### Questions #####
+
+Should we use rolling or expanding window CV for model validation? Expanding could lead to wrong patterns, since old saisons aren't as good for predicting the newer.
+The disadvantage is, that we have less data for our model to train on
