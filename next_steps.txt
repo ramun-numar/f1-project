@@ -1,0 +1,14 @@
+
+#### Model creation ####
+
+1. Move the reusable data preparation and feature calculations from the notebook into scripts.
+
+2. Load qualifying results for the upcoming race and confirm the starting grid, including penalties and pit lane starts.
+
+3. Create one row per driver and calculate features using only information available before the race.
+
+4. Train XGBoost on the previous five years using the selected parameters.
+
+5. Predict and rank drivers for that race, then save the predictions before the start.
+
+6. Compare predictions with actual results once the race is completed.
