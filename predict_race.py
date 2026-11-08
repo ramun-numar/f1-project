@@ -9,7 +9,7 @@ import race_data
 #### SUPPLEMENT THE STARTING POSITION MANUALLY ####
 
 YEAR = 2026
-RACE_FOLDER = "19-mexico"
+RACE_FOLDER = "20-sao-paulo"
 
 # Path(__file__) is the path to the predict_race.py file. resolve().parent() gives its folder
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -35,7 +35,6 @@ if not grid_path.exists():
 participants_with_grid = race_data.add_starting_grid(participants, grid_path)
 
 #### PREPARE THE DATA ####
-
 
 # crate a copy to leave paricipants_with_grid as it is, since we later on add upcoming_race
 upcoming_race = participants_with_grid.copy()
