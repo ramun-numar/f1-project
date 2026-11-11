@@ -19,7 +19,7 @@ BLUE = "#5695E8"
 
 
 def f1_style(fig, title, subtitle, height=600):
-    """Apply consistent F1 styling to all plots."""
+    # Apply consistent F1 styling to all plots.
 
     fig.update_layout(
         title=dict(
@@ -58,7 +58,7 @@ def f1_style(fig, title, subtitle, height=600):
 
 
 def feature_group(name):
-    """Group model features into readable categories."""
+    # Group model features into readable categories.
 
     name = str(name).split("__", 1)[-1]
 
