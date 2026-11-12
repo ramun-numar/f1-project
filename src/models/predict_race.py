@@ -1,9 +1,14 @@
-from model import create_model
-from features import numeric_features, categorical_features
-from features import prepare_features
-import pandas as pd
+import sys
 from pathlib import Path
-import race_data
+
+# make src/ importable whether this file is run directly or via runpy from app.py
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from models.model import create_model
+from models.features import numeric_features, categorical_features
+from models.features import prepare_features
+import pandas as pd
+from data import race_data
 
 
 #### SUPPLEMENT THE STARTING POSITION MANUALLY ####
@@ -11,8 +16,8 @@ import race_data
 YEAR = 2026
 RACE_FOLDER = "20-sao-paulo"
 
-# Path(__file__) is the path to the predict_race.py file. resolve().parent() gives its folder
-PROJECT_DIR = Path(__file__).resolve().parent
+# Path to project root (src/models/predict_race.py -> go up 3 levels to project root)
+PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 
 race_info, participants = race_data.load_race_data(
     year=YEAR, race_folder=RACE_FOLDER)

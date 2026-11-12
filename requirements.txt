@@ -1,17 +1,13 @@
 # App
 streamlit
+plotly
 
 # Data
 fastf1
-## Import
-io
-pathlib
-urllib.request
-zipfile
-
-## Wrangling
 pandas
-
+numpy
+pyyaml
+tif1
 
 # Modeling
 scikit-learn

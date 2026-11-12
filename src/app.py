@@ -1,5 +1,6 @@
 import streamlit as st
 import runpy
+from pathlib import Path
 from visualizations.visualizations import plot_race_results, plot_prediction_breakdown
 from visualizations.telemetry_animation import telemetry_viz
 import tif1
@@ -8,7 +9,8 @@ import tif1
 # caching resource means that the function is only executed in the first run, on subsequent runs the cached result is used
 @st.cache_resource
 def load_model():
-    result = runpy.run_path("predict_race.py")
+    predict_race_path = Path(__file__).parent / "models" / "predict_race.py"
+    result = runpy.run_path(str(predict_race_path))
     return result["prediction_data"], result["race_model"]
 
 prediction_data, race_model = load_model()
