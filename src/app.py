@@ -2,7 +2,7 @@ import streamlit as st
 import runpy
 from pathlib import Path
 from visualizations.visualizations import plot_race_results, plot_prediction_breakdown
-from visualizations.telemetry_animation import telemetry_viz
+from visualizations.telemetry_animation import telemetry_viz_2drivers_messages
 import tif1
 
 # LOADING PREDICTION MODEL
@@ -44,7 +44,57 @@ def get_drivers(year_tel, circuit_tel):
     return dict(zip(drivers_tel["FullName"], drivers_tel["Driver"]))
 
 drivers_tel = get_drivers(year_tel, circuit_tel)
-driver_tel = st.selectbox("Driver", sorted(drivers_tel))
+driver1_tel = st.selectbox("Driver", sorted(drivers_tel))
+driver2_tel = st.selectbox("Opponent", sorted(drivers_tel), index=1)
 
 # animation
-st.plotly_chart(telemetry_viz(year_tel, circuit_tel, driver_tel), width="stretch")
+if driver1_tel == driver2_tel:
+    st.info("🏎️ One driver, two cars? Even the FIA wouldn't allow that. Pick two different drivers!")
+
+else:
+    try:
+        fig = telemetry_viz_2drivers_messages(
+            year_tel, circuit_tel,
+            drivers_tel[driver1_tel], drivers_tel[driver2_tel]
+        )
+        st.plotly_chart(fig, width="stretch")
+
+    except Exception as e:
+        st.warning(
+            "🏎️ Oops! Looks like the telemetry couldn't keep up. "
+            "There might not be enough data for this race and driver combination "
+            "to produce our fabulous animation. Try another combination!"
+        )
+
+        with st.expander("Technical details"):
+            st.code(str(e))
+
+
+# This is AI generated - intended as inspo :)
+with st.expander("🤓 For the Data Nerds — How does this work?"):
+
+    st.markdown("""
+    **1. Telemetry & Animation**
+
+    We retrieve the fastest-lap telemetry of both drivers using `tif1`. Since telemetry is recorded at irregular intervals, we interpolate their X/Y coordinates onto a common time grid of **20 frames per second**.
+
+    **2. Dividing the Circuit**
+
+    We split the circuit into sections using the official corner coordinates. Each corner is matched to the nearest telemetry point within a ±1% relative-distance window.
+
+    **3. Comparing Section Times**
+
+    We calculate how long each driver takes between consecutive corners. The difference tells us who gained time in each section.
+
+    **4. Synchronizing the Messages**
+
+    A message appears only once **both drivers have completed the section**. We use `np.searchsorted()` to match these moments to the animation frames.
+
+    ---
+
+    **⚠️ A little disclaimer**
+
+    Corner positions and telemetry samples do not always match perfectly. Section times are therefore approximations rather than official timing measurements.
+
+    Also, we're comparing each driver's *fastest lap*, not necessarily laps driven at the same moment in the race.
+    """)
