@@ -2,7 +2,7 @@ import streamlit as st
 import runpy
 from pathlib import Path
 from visualizations.visualizations import plot_race_results, plot_prediction_breakdown
-from visualizations.telemetry_animation import telemetry_viz_2drivers_messages
+from visualizations.telemetry_animation import telemetry_viz_2drivers_messages_subplot
 import tif1
 
 # LOADING PREDICTION MODEL
@@ -53,7 +53,7 @@ if driver1_tel == driver2_tel:
 
 else:
     try:
-        fig = telemetry_viz_2drivers_messages(
+        fig = telemetry_viz_2drivers_messages_subplot(
             year_tel, circuit_tel,
             drivers_tel[driver1_tel], drivers_tel[driver2_tel]
         )
@@ -70,8 +70,7 @@ else:
             st.code(str(e))
 
 
-# This is AI generated - intended as inspo :)
-with st.expander("🤓 For the Data Nerds — How does this work?"):
+with st.expander("🤓 How does this work?"):
 
     st.markdown("""
     **1. Telemetry & Animation**
@@ -80,7 +79,7 @@ with st.expander("🤓 For the Data Nerds — How does this work?"):
 
     **2. Dividing the Circuit**
 
-    We split the circuit into sections using the official corner coordinates. Each corner is matched to the nearest telemetry point within a ±1% relative-distance window.
+    We split the circuit into sections using the `tif1` corner coordinates. Each corner is matched to the nearest telemetry point within a ±1% relative-distance window (to account for nearest points on a different part of the track).
 
     **3. Comparing Section Times**
 
@@ -92,7 +91,7 @@ with st.expander("🤓 For the Data Nerds — How does this work?"):
 
     ---
 
-    **⚠️ A little disclaimer**
+    **⚠️**
 
     Corner positions and telemetry samples do not always match perfectly. Section times are therefore approximations rather than official timing measurements.
 

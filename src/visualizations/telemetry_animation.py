@@ -3,9 +3,10 @@
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import tif1
 
-def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
+def telemetry_viz_2drivers_messages_subplot(year, circuit, driver1, driver2, fps=20):
 
     # F1 DESIGN (AI-generated)
     BACKGROUND = "#101014"
@@ -75,6 +76,14 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
     sections["Delta"] = sections["Time1"] - sections["Time2"]
     sections["Winner"] = np.where(sections["Delta"] > 0, driver2, driver1)
 
+    # Calculate cumulative time gap
+    sections["CumulativeDelta"] = sections["Delta"].cumsum()
+
+    gap_x = np.arange(len(sections) + 1)
+    gap_y = np.concatenate(([0], sections["CumulativeDelta"].to_numpy()))
+
+    gap_colors = [RED if value < 0 else BLUE if value > 0 else WHITE for value in gap_y]
+
     # 7. Create section messages
     sections["Message"] = (sections["Winner"] + " gained " + sections["Delta"].abs().round(3).astype(str) + "s in " + sections["Section"])
 
@@ -120,12 +129,22 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
     section_y = np.concatenate((corners.sort_values("Distance")["Y"].to_numpy(), [track["Y"].iloc[0]]))
 
     # 12. Create figure
-    fig = go.Figure()
+    fig = make_subplots(rows=2, cols=1, row_heights=[0.70, 0.30], vertical_spacing=0.10)
 
-    fig.add_trace(go.Scatter(x=track["X"], y=track["Y"], mode="lines", name="Circuit", line=dict(color="#666674", width=5), hoverinfo="skip"))
+    fig.add_trace(go.Scatter(x=track["X"], y=track["Y"], mode="lines", name="Circuit", line=dict(color="#666674", width=5), hoverinfo="skip"), row=1, col=1)
 
     for driver, color in zip(drivers, colors):
-        fig.add_trace(go.Scatter(x=[telemetry_data[driver]["x"][0]], y=[telemetry_data[driver]["y"][0]], mode="markers", name=driver, marker=dict(color=color, size=13, line=dict(color=WHITE, width=2)), hoverinfo="skip"))
+        if driver == driver1:
+            marker = dict(symbol="diamond", color=RED, size=14)
+        else:
+            marker = dict(symbol="circle", color=BLUE, size=11)
+
+        fig.add_trace(go.Scatter(x=[telemetry_data[driver]["x"][0]], y=[telemetry_data[driver]["y"][0]], mode="markers", name=driver, marker=marker, hoverinfo="skip"), row=1, col=1)
+
+    # Cumulative time gap
+    fig.add_trace(go.Scatter(x=[0], y=[0], mode="lines+markers", name="Cumulative Gap", line=dict(color=WHITE, width=3), marker=dict(symbol="circle", color=WHITE, size=10, opacity=1), hoverinfo="skip"), row=2, col=1)
+
+    fig.add_hline(y=0, line_dash="dash", line_color=MUTED, opacity=0.6, row=2, col=1)
 
     # F1 styling (AI-generated)
     fig.update_layout(
@@ -138,20 +157,26 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
         paper_bgcolor=BACKGROUND,
         plot_bgcolor=BACKGROUND,
         font=dict(family="Arial", color=WHITE, size=13),
-        width=750, height=580,
-        margin=dict(l=20, r=20, t=90, b=65),
+        width=750, height=950,
+        margin=dict(l=70, r=40, t=110, b=100),
         showlegend=False,
         hovermode=False
     )
 
-    # Leave some room for the message boxes
-    padding = 0.25
+    # Circuit axes
+    padding = 0.30
 
     x_pad = (track["X"].max() - track["X"].min()) * padding
     y_pad = (track["Y"].max() - track["Y"].min()) * padding
 
-    fig.update_xaxes(visible=False, range=[track["X"].min() - x_pad, track["X"].max() + x_pad])
-    fig.update_yaxes(visible=False, range=[track["Y"].min() - y_pad, track["Y"].max() + y_pad], scaleanchor="x", scaleratio=1)
+    fig.update_xaxes(visible=False, range=[track["X"].min() - x_pad, track["X"].max() + x_pad], row=1, col=1)
+    fig.update_yaxes(visible=False, range=[track["Y"].min() - y_pad, track["Y"].max() + y_pad], scaleanchor="x", scaleratio=1, row=1, col=1)
+
+    # Cumulative gap axes
+    gap_limit = max(0.1, np.max(np.abs(gap_y)) * 1.2)
+
+    fig.update_xaxes(title_text="COMPLETED SECTIONS", range=[0, len(sections)], showgrid=False, tickfont=dict(color=MUTED), row=2, col=1)
+    fig.update_yaxes(title_text="TIME GAP (s)", range=[-gap_limit, gap_limit], gridcolor=GRID, zeroline=False, tickfont=dict(color=MUTED), row=2, col=1)
 
     # 13. Animation
     frames = []
@@ -165,6 +190,10 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
 
         completed = np.searchsorted(message_times, time_interp[i], side="right")
         annotations = []
+
+        # Update cumulative time gap
+        scatter = go.Scatter(x=gap_x[:completed + 1], y=gap_y[:completed + 1], mode="lines+markers", line=dict(color=WHITE, width=3), marker=dict(symbol="circle", color=gap_colors[:completed + 1], size=[8] * completed + [12], opacity=1))
+        positions.append(scatter)
 
         if completed > 0:
             j = completed - 1
@@ -208,10 +237,12 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
                 bordercolor=color,
                 borderwidth=1.5,
                 borderpad=8,
-                font=dict(size=12, color=WHITE)
+                font=dict(size=12, color=WHITE),
+                xref="x",
+                yref="y"
             ))
 
-        frame = go.Frame(data=positions, traces=[1, 2], layout=go.Layout(annotations=annotations))
+        frame = go.Frame(data=positions, traces=[1, 2, 3], layout=go.Layout(annotations=annotations))
         frames.append(frame)
 
     fig.frames = frames
@@ -219,7 +250,7 @@ def telemetry_viz_2drivers_messages(year, circuit, driver1, driver2, fps=20):
     # 14. Playback controls (AI generated)
     fig.update_layout(updatemenus=[dict(
         type="buttons", direction="left", showactive=False,
-        x=0.5, xanchor="center", y=-0.05, yanchor="top",
+        x=0.5, xanchor="center", y=-0.1, yanchor="top",
         bgcolor="#202027", bordercolor=GRID, font=dict(color=WHITE, size=13),
         buttons=[
             dict(label="▶ Play", method="animate", args=[None, {"frame": {"duration": 1000 / fps, "redraw": True}, "transition": {"duration": 0}, "fromcurrent": True}]),
