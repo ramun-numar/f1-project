@@ -93,7 +93,7 @@ def plot_race_results(prediction_data):
         y="driverId",
         color="constructorId",
         orientation="h",
-        hover_data=["predicted_score", "gridPositionNumber"],
+        hover_data=["predicted_score"],
         category_orders={"driverId": driver_order[::-1]}
     )
 
@@ -119,7 +119,6 @@ def plot_race_results(prediction_data):
             "<b>%{y}</b><br>"
             "Predicted position: %{x}<br>"
             "Predicted score: %{customdata[0]:.3f}<br>"
-            "Grid position: %{customdata[1]}"
             "<extra></extra>"
         )
     )
