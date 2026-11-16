@@ -5,8 +5,8 @@ from zipfile import ZipFile
 
 # data folder
 # .resolve() converts a path into an absolute path, for prevention of potential buggs
-# .parent then stores the parent folder
-PROJECT_DIR = Path(__file__).resolve().parent
+# .parent.parent then goes up to project root
+PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 
 # creates the paths important folders
 DATA_DIR = PROJECT_DIR / "data" / "raw"

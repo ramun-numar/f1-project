@@ -46,7 +46,7 @@ for window in [3, 5, 10, 20]:
         numeric_features.append(f"{name}_{window}")
 
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_DIR / "data" / "raw"
 
 
