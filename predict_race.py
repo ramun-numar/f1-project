@@ -65,8 +65,8 @@ prediction_data = all_features.loc[all_features["raceId"].eq(
 # create the timestamp of the predicted race
 race_date = pd.Timestamp(race_info["date"])
 
-# the training window starts 5 years before
-window_start = race_date - pd.DateOffset(years=5)
+# the training window starts 10 years before
+window_start = race_date - pd.DateOffset(years=10)
 
 # changes the date as text into a date class object
 dates = pd.to_datetime(all_features["date"])
