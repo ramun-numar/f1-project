@@ -8,13 +8,13 @@ categorical_features = [
     "circuitType"]
 
 numeric_features = [
-    "gridPositionNumber",
+    # "gridPositionNumber",
     "qualificationPositionNumber",
-    "grid_fraction",
+    # "grid_fraction",
     "qualifying_fraction",
-    "pit_lane",
+    # "pit_lane",
     "street",
-    "grid_street",
+    # "grid_street",
     "qualifying_street",
     "courseLength",
     "turns",
@@ -45,6 +45,25 @@ for window in [3, 5, 10, 20]:
     for name in rolling_window_features:
         numeric_features.append(f"{name}_{window}")
 
+# keep the existing features for predictions after qualifying
+post_qualifying_numeric_features = numeric_features.copy()
+
+# exclude all information derived from the current qualifying session
+current_qualifying_features = {
+    "qualificationPositionNumber",
+    "qualifying_fraction",
+    "qualifying_street",
+    "q1_gap",
+    "q2_gap",
+    "q3_gap",
+    "quali_vs_recent",
+    "team_quali_vs_recent",
+}
+
+pre_race_numeric_features = [feature
+                             for feature in post_qualifying_numeric_features
+                             if feature not in current_qualifying_features
+                             ]
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_DIR / "data" / "raw"
@@ -141,15 +160,10 @@ def prepare_features(upcoming_race=None):
         model_data = model_data.sort_values(
             ["date", "raceId", "driverId"]).reset_index(drop=True)
 
-    #### HANDLING MISSING VALUES ####
-
-    model_data = model_data[model_data["gridPositionText"].notna()]
+    #### CALCULATING FIELD SIZE ####
 
     model_data["fieldSize"] = model_data.groupby(
         "raceId")["driverId"].transform("size")
-
-    model_data.loc[model_data["gridPositionText"] == "PL",
-                   "gridPositionNumber"] = model_data["fieldSize"]
 
     #### FEARTURE SELECTION ####
 
@@ -166,8 +180,8 @@ def prepare_features(upcoming_race=None):
         "courseLength",
         "turns",
         "scheduledLaps",
-        "gridPositionNumber",
-        "gridPositionText",
+        # "gridPositionNumber",
+        # "gridPositionText",
         "qualificationPositionNumber",
         "q1Millis",
         "q2Millis",
@@ -184,11 +198,13 @@ def prepare_features(upcoming_race=None):
     model_data["qualifying_fraction"] = (
         model_data["qualificationPositionNumber"] - 1) / (model_data["fieldSize"] - 1)
 
-    model_data["grid_fraction"] = (
-        model_data["gridPositionNumber"] - 1) / (model_data["fieldSize"] - 1)
-
     model_data["finish_fraction"] = (
         model_data["positionDisplayOrder"] - 1) / (model_data["fieldSize"] - 1)
+
+    non_starter = model_data["positionText"].isin(
+        ["DNS", "DNQ", "DNP", "DNPQ"])
+
+    model_data.loc[non_starter, "finish_fraction"] = float("nan")
 
     model_data["driver_finish_5"] = model_data.groupby("driverId")[
         "finish_fraction"].transform(
@@ -202,8 +218,10 @@ def prepare_features(upcoming_race=None):
     model_data["quali_vs_recent"] = model_data["qualifying_fraction"] - \
         model_data["driver_quali_5"]
 
-    model_data["failure"] = model_data["positionText"].eq(
-        "DNF") | model_data["reasonRetired"].notna()
+    model_data["failure"] = (model_data["positionText"].eq("DNF")
+                             | model_data["reasonRetired"].notna()).astype(float)
+
+    model_data.loc[non_starter, "failure"] = float("nan")
 
     model_data["failure_rate"] = (
         model_data.groupby("driverId")["failure"]
@@ -214,7 +232,9 @@ def prepare_features(upcoming_race=None):
     )
 
     for window in [3, 5, 10, 20]:
-        for source, name in [("finish_fraction", "finish"), ("qualifying_fraction", "quali"), ("failure", "failure_rate")]:
+        for source, name in [("finish_fraction", "finish"),
+                             ("qualifying_fraction", "quali"),
+                             ("failure", "failure_rate")]:
             model_data[f"driver_{name}_{window}"] = (
                 model_data.groupby("driverId")[source]
                 .transform(lambda x: x.shift(1).rolling(window, min_periods=1).mean()))
@@ -317,14 +337,8 @@ def prepare_features(upcoming_race=None):
 
     model_data["street"] = model_data["circuitType"].eq("STREET").astype(int)
 
-    model_data["grid_street"] = model_data["grid_fraction"] * \
-        model_data["street"]
-
     model_data["qualifying_street"] = model_data["qualifying_fraction"] * \
         model_data["street"]
-
-    model_data["pit_lane"] = model_data["gridPositionText"].eq(
-        "PL").astype(int)
 
     circuit_data = (
         model_data.groupby(

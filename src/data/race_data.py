@@ -1,4 +1,5 @@
 from decimal import Decimal
+from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 import pandas as pd
@@ -21,10 +22,70 @@ def time_to_milliseconds(value):
     return int((Decimal(minutes) * 60 + Decimal(seconds)) * 1000)
 
 
-def load_race_data(year, race_folder):
+def load_race_data(year, race_folder, mode="post"):
     base_url = ("https://raw.githubusercontent.com/f1db/f1db/main/" +
                 f"src/data/seasons/{year}/races/{race_folder}")
     race = load_yaml(f"{base_url}/race.yml")
+
+    if mode not in {"pre", "post"}:
+        raise ValueError("Prediction mode must be 'pre' or 'post'")
+
+    # try to get to know which drivers drove last to make a prediction for the race
+    if mode == "pre":
+        data_dir = Path(__file__).resolve().parents[2] / "data" / "raw"
+
+        results = pd.read_csv(
+            data_dir / "f1db-races-race-results.csv"
+        )
+        calendar = pd.read_csv(data_dir / "f1db-races.csv")
+
+        # use only earlier races from the same season
+        history = results.merge(
+            calendar[["id", "date"]],
+            left_on="raceId",
+            right_on="id",
+            validate="many_to_one",
+        )
+
+        history = history.loc[
+            history["year"].eq(year)
+            & pd.to_datetime(history["date"]).lt(pd.Timestamp(race["date"]))
+        ]
+
+        # for the first race of the season we can't do a prediction with this set up,
+        # as we don't know yet, which drivers will start for which teams
+        if history.empty:
+            raise ValueError(
+                "No earlier race results available for this season"
+            )
+
+        # assume the latest available lineup remains unchanged
+        latest_race_id = history.sort_values(
+            ["date", "raceId"]
+        )["raceId"].iloc[-1]
+
+        drivers = history.loc[
+            history["raceId"].eq(latest_race_id),
+            ["driverId", "constructorId"],
+        ].copy()
+
+        if drivers["driverId"].duplicated().any():
+            raise ValueError("Duplicate participant entries")
+
+        drivers["raceId"] = race["id"]
+        drivers["year"] = year
+        drivers["round"] = race["round"]
+
+        # leave current qualifying information unknown
+        for column in ["qualificationPositionNumber", "q1Millis", "q2Millis", "q3Millis"]:
+            drivers[column] = float("nan")
+
+        print(
+            f"Using participants from race {latest_race_id}; "
+            "assuming no driver or team changes"
+        )
+
+        return race, drivers
 
     try:
         qualifying = load_yaml(f"{base_url}/qualifying-results.yml")

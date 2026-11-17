@@ -6,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 # the alpha value stems from the optimization in the analysis notebook
-def create_model(numeric_features, categorical_features, alpha=777):
+def create_model(numeric_features, categorical_features, alpha=903):
 
     numeric_pipeline = Pipeline([
         ("imputer", SimpleImputer(strategy="median", add_indicator=True)),

@@ -1,48 +1,48 @@
+from models.features import (
+    prepare_features,
+    pre_race_numeric_features,
+    post_qualifying_numeric_features,
+    categorical_features,
+)
+from data import race_data
+import pandas as pd
+from models.model import create_model
+import joblib
+import json
 import sys
 from pathlib import Path
 
-# make src/ importable whether this file is run directly or via runpy from app.py
+# Make src/ importable before importing project modules.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from models.model import create_model
-from models.features import numeric_features, categorical_features
-from models.features import prepare_features
-import pandas as pd
-from data import race_data
 
-
-#### SUPPLEMENT THE STARTING POSITION MANUALLY ####
+#### PREDICTION SETTINGS ####
 
 YEAR = 2026
 RACE_FOLDER = "20-sao-paulo"
+
+MODE = "post"
+
+if MODE == "pre":
+    numeric_features = pre_race_numeric_features
+elif MODE == "post":
+    numeric_features = post_qualifying_numeric_features
+else:
+    raise ValueError("Prediction mode must be 'pre' or 'post'")
 
 # Path to project root (src/models/predict_race.py -> go up 3 levels to project root)
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 
 race_info, participants = race_data.load_race_data(
-    year=YEAR, race_folder=RACE_FOLDER)
-
-grid_path = (PROJECT_DIR / "data" / "input" /
-             str(YEAR) / RACE_FOLDER / "starting_grid.csv")
-
-grid_path.parent.mkdir(parents=True, exist_ok=True)
-
-if not grid_path.exists():
-    starting_grid = participants[["raceId", "driverId"]].copy()
-    starting_grid["gridPositionText"] = ""
-
-    starting_grid.to_csv(grid_path, index=False)
-
-    raise SystemExit(
-        f"Starting-grid template created:\n{grid_path}\nFill in gridPositionText, save the file and run again."
-    )
-
-participants_with_grid = race_data.add_starting_grid(participants, grid_path)
+    year=YEAR,
+    race_folder=RACE_FOLDER,
+    mode=MODE,
+)
 
 #### PREPARE THE DATA ####
 
 # crate a copy to leave paricipants_with_grid as it is, since we later on add upcoming_race
-upcoming_race = participants_with_grid.copy()
+upcoming_race = participants.copy()
 
 # add the same race information used in the historical training data
 for column in [
@@ -70,8 +70,8 @@ prediction_data = all_features.loc[all_features["raceId"].eq(
 # create the timestamp of the predicted race
 race_date = pd.Timestamp(race_info["date"])
 
-# the training window starts 5 years before
-window_start = race_date - pd.DateOffset(years=5)
+# the training window starts 10 years before
+window_start = race_date - pd.DateOffset(years=10)
 
 # changes the date as text into a date class object
 dates = pd.to_datetime(all_features["date"])
@@ -110,9 +110,50 @@ prediction_data["predicted_position"] = prediction_data["predicted_score"].rank(
 prediction = prediction_data[[
     "driverId",
     "constructorId",
-    "gridPositionText",
     "predicted_position"
 ]].sort_values("predicted_position")
 
 # index = False to leave out the index when printing
 print(prediction.to_string(index=False))
+
+# create a separate folder for each prediction run
+created_at = pd.Timestamp.now(tz="UTC")
+run_id = created_at.strftime("%Y%m%dT%H%M%SZ")
+
+output_dir = (
+    PROJECT_DIR / "data" / "predictions" /
+    str(YEAR) / RACE_FOLDER / MODE / run_id
+)
+
+output_dir.mkdir(parents=True, exist_ok=False)
+
+# save the complete prediction table for dashboard use
+prediction_data.sort_values("predicted_position").to_csv(
+    output_dir / "prediction.csv", index=False)
+
+# preserve the exact training data used in this run
+train_data.to_csv(output_dir / "training_data.csv", index=False)
+
+# save the fitted pipeline for predictions and feature explanations
+joblib.dump(race_model, output_dir / "model.joblib")
+
+# distinguish the creation time from the date of the predicted race
+metadata = {
+    "created_at": created_at.isoformat(),
+    "race_date": race_date.isoformat(),
+    "race_id": int(race_info["id"]),
+    "year": YEAR,
+    "race_folder": RACE_FOLDER,
+    "mode": MODE,
+    "training_start": train_data["date"].min(),
+    "training_end": train_data["date"].max(),
+    "numeric_features": numeric_features,
+    "categorical_features": categorical_features,
+    "model_type": "Ridge",
+    "alpha": race_model.named_steps["regression"].alpha,
+}
+
+with (output_dir / "metadata.json").open("w", encoding="utf-8") as file:
+    json.dump(metadata, file, indent=2, default=str)
+
+print(f"Prediction saved to: {output_dir}")
