@@ -2,8 +2,8 @@ import streamlit as st
 import runpy
 from pathlib import Path
 import pandas as pd
-from visualizations.visualizations import plot_race_results, plot_prediction_breakdown
-from visualizations.telemetry_animation  import (telemetry_viz_2drivers_2modes, get_overtake_highlights)
+from visualizations.visualizations import plot_race_results, plot_prediction_breakdown, plot_position_development
+from visualizations.telemetry_animation  import telemetry_viz_2drivers_2modes, get_overtake_highlights
 import tif1
 
 # LOADING PREDICTION MODEL
@@ -63,64 +63,65 @@ if mode == "Fastest Lap":
                 st.code(str(e))
 
 else:
+    # POSITION DEVELOPMENT GRAPH
+    drivers_tel = get_drivers(year_tel, circuit_tel)
+    selected = st.selectbox("Highlight driver", ["All Drivers"] + sorted(drivers_tel))
+    selected_driver = None if selected == "All Drivers" else drivers_tel[selected]
+    fig_pos = plot_position_development(year_tel, circuit_tel, selected_driver)
+    st.plotly_chart(fig_pos, width="stretch")
+
     @st.cache_data
     def load_highlights(year, circuit):
         return get_overtake_highlights(year, circuit)
 
     highlights = load_highlights(year_tel, circuit_tel)
+
     st.subheader("Race Highlights")
     st.caption("Potential overtakes from lap-end position changes, excluding recorded pit-stop events.")
 
     if highlights.empty:
         st.info("No suitable overtakes found for this race.")
 
-    # this for-loop was coded by AI
-    for i, event in highlights.iterrows():
+    else:
+        category = st.selectbox(
+            "Highlight category",
+            ["All"] + sorted(highlights["Category"].unique())
+        )
 
-        lap = int(event["LapNumber"])
-        driver1 = event["GainedAhead"]
-        driver2 = event["FellBehind"]
+        if category != "All":
+            highlights = highlights[highlights["Category"] == category]
 
-        replay = (year_tel, circuit_tel, lap, driver1, driver2)
+        for i, event in highlights.iterrows():
 
-        col1, col2 = st.columns([5, 1], vertical_alignment="center")
+            lap = int(event["LapNumber"])
+            driver1 = event["GainedAhead"]
+            driver2 = event["FellBehind"]
 
-        with col1:
-            st.markdown(
-                f"**Lap {lap}** — {event['Headline']} "
-                f"(P{int(event['NewPosition'])})"
-            )
+            replay = (year_tel, circuit_tel, lap, driver1, driver2)
 
-        with col2:
-            if st.button("▶ Replay", key=f"replay_{i}"):
-                st.session_state["replay"] = replay
+            col1, col2 = st.columns([5, 1], vertical_alignment="center")
 
-        # Show the replay directly below the selected event
-        if st.session_state.get("replay") == replay:
-            try:
-                fig = telemetry_viz_2drivers_2modes(
-                    year_tel, circuit_tel, driver1, driver2,
-                    fps=12, lap_number=lap
+            with col1:
+                st.markdown(
+                    f"**Lap {lap}** — {event['Headline']} "
+                    f"(P{int(event['NewPosition'])})"
                 )
-                st.plotly_chart(fig, width="stretch")
 
-            except Exception as e:
-                st.exception(e)
+            with col2:
+                if st.button("▶ Replay", key=f"replay_{year_tel}_{circuit_tel}_{i}"):
+                    st.session_state["replay"] = replay
 
-    replay = st.session_state.get("replay")
-    if replay is not None and replay[:2] == (year_tel, circuit_tel):
-        _, _, lap, driver1, driver2 = replay
-        st.subheader(f"Lap {lap}: {driver1} vs {driver2}")
-        try:
-            fig = telemetry_viz_2drivers_2modes(
-                year_tel, circuit_tel, driver1, driver2, fps=12, lap_number=lap
-            )
-            st.plotly_chart(fig, width="stretch")
-        except Exception as e:
-            st.warning("Replay unavailable for this event.")
-            with st.expander("Technical details"):
-                st.code(str(e))
+            # Show animation directly below the selected event
+            if st.session_state.get("replay") == replay:
+                try:
+                    fig = telemetry_viz_2drivers_2modes(
+                        year_tel, circuit_tel, driver1, driver2,
+                        fps=12, lap_number=lap
+                    )
+                    st.plotly_chart(fig, width="stretch")
 
+                except Exception as e:
+                    st.exception(e)
 
 with st.expander("🤓 How does this work?"):
     if mode == "Fastest Lap":

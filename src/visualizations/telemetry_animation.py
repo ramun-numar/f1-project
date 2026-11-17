@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 import tif1
 
 
-def get_overtake_highlights(year, circuit, limit=8):
+def get_overtake_highlights(year, circuit):
 
     session = tif1.get_session(year, circuit, "Race")
     laps = session.laps.copy()
@@ -68,37 +68,39 @@ def get_overtake_highlights(year, circuit, limit=8):
                 if (winner, lap) in pit_set or (loser, lap) in pit_set:
                     continue
 
-                events.append({
-                    "LapNumber": int(lap),
-                    "GainedAhead": winner,
-                    "FellBehind": loser,
-                    "NewPosition": int(after[winner])
-                })
+                events.append({"LapNumber": int(lap), "GainedAhead": winner, "FellBehind": loser, "NewPosition": int(after[winner]), "PositionsGained": int(before[winner] - after[winner])})
 
-    # Select the most interesting events
-    highlights = pd.DataFrame(
-        events,
-        columns=["LapNumber", "GainedAhead", "FellBehind", "NewPosition"]
+    # Select interesting overtakes
+    highlights = pd.DataFrame(events, columns=[
+        "LapNumber", "GainedAhead", "FellBehind",
+        "NewPosition", "PositionsGained"
+    ])
+
+    last_lap = pos.index.max()
+
+    highlights["Category"] = np.select(
+        [
+            highlights["NewPosition"] == 1,
+            highlights["NewPosition"] <= 3,
+            (highlights["LapNumber"] >= 0.75 * last_lap) & (highlights["NewPosition"] <= 10),
+            (highlights["PositionsGained"] >= 2) & (highlights["NewPosition"] <= 10)
+        ],
+        ["Lead change", "Podium battle", "Late-race battle", "Big position gain"],
+        default="Other"
     )
 
-    highlights = highlights.sort_values(
-        ["NewPosition", "LapNumber"],
-        ascending=[True, False]
-    ).head(limit).copy()
+    highlights = highlights[
+        (highlights["Category"] != "Other") &
+        (highlights["LapNumber"] > 1)
+    ].copy()
 
-    # Generate headlines
-    def headline(row):
-        a = row["GainedAhead"]
-        b = row["FellBehind"]
+    highlights = highlights.sort_values(["LapNumber", "NewPosition"])
 
-        if row["NewPosition"] == 1:
-            return f"Lead change! {a} moves ahead of {b}"
-        elif row["NewPosition"] <= 3:
-            return f"Podium battle! {a} moves ahead of {b}"
-        else:
-            return f"{a} moves ahead of {b}"
-
-    highlights["Headline"] = highlights.apply(headline, axis=1)
+    highlights["Headline"] = (
+        highlights["Category"] + "! " +
+        highlights["GainedAhead"] + " moves ahead of " +
+        highlights["FellBehind"]
+    )
 
     return highlights.reset_index(drop=True)
 

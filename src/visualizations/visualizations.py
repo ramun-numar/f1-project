@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import tif1
 
 # Designed by AI
 # Coded by Human :)
@@ -211,5 +212,86 @@ def plot_prediction_breakdown(driver, race_model):
     )
 
     fig.update_yaxes(autorange="reversed")
+
+    return fig
+
+def plot_position_development(year, circuit, selected_driver=None):
+
+    session = tif1.get_session(year, circuit, "Race")
+
+    # prepare lap positions
+    positions = session.laps[["Driver", "LapNumber", "Position"]].copy()
+    positions = positions.dropna()
+
+    # add starting grid
+    grid = session.results[["Abbreviation", "GridPosition"]].copy()
+    grid = grid.rename(columns={"Abbreviation": "Driver", "GridPosition": "Position"})
+    grid["LapNumber"] = 0
+
+    positions = pd.concat([positions, grid], ignore_index=True)
+    positions = positions[positions["Position"] > 0]
+    positions = positions.sort_values(["Driver", "LapNumber"])
+
+    drivers = sorted(positions["Driver"].unique())
+    laps = sorted(positions["LapNumber"].astype(int).unique())
+
+    # plot driver trajectories
+    fig = go.Figure()
+
+    for driver in drivers:
+        d = positions[positions["Driver"] == driver]
+
+        highlighted = selected_driver is None or driver == selected_driver
+
+        fig.add_trace(go.Scatter(
+            x=d["LapNumber"],
+            y=d["Position"],
+            mode="lines",
+            name=driver,
+            opacity=0.85 if selected_driver is None else (1 if highlighted else 0.4),
+            line=dict(width=4 if selected_driver == driver else 2),
+            hovertemplate=f"<b>{driver}</b><br>Lap %{{x}}<br>Position P%{{y}}<extra></extra>"
+        ))
+
+    # apply F1 styling
+    fig = f1_style(
+        fig,
+        title="RACE POSITION DEVELOPMENT",
+        subtitle=f"{year} {circuit} | Lap-by-Lap Race Positions",
+        height=650
+    )
+
+    fig.update_layout(
+        margin=dict(l=70, r=50, t=125, b=125),
+        hovermode="closest"
+    )
+
+    fig.update_xaxes(title="Lap", dtick=5)
+    fig.update_yaxes(
+        title="Position",
+        autorange="reversed",
+        dtick=1,
+        showgrid=True,
+        gridcolor=GRID
+    )
+
+    # lap slider
+    fig.add_vline(x=laps[0], line_dash="dash", line_color=WHITE, opacity=0.6)
+
+    steps = []
+
+    for lap in laps:
+        steps.append(dict(
+            method="relayout",
+            args=[{"shapes[0].x0": int(lap), "shapes[0].x1": int(lap)}],
+            label=str(lap)
+        ))
+
+    fig.update_layout(sliders=[dict(
+        active=0,
+        steps=steps,
+        currentvalue={"prefix": "Lap: ", "font": {"color": WHITE}},
+        x=0.05, y=-0.12, len=0.9
+    )])
 
     return fig
