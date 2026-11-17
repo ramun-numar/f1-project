@@ -1,8 +1,9 @@
 import streamlit as st
 import runpy
 from pathlib import Path
+import pandas as pd
 from visualizations.visualizations import plot_race_results, plot_prediction_breakdown
-from visualizations.telemetry_animation import telemetry_viz_2drivers_messages_subplot
+from visualizations.telemetry_animation  import (telemetry_viz_2drivers_2modes, get_overtake_highlights)
 import tif1
 
 # LOADING PREDICTION MODEL
@@ -29,71 +30,122 @@ st.plotly_chart(plot_prediction_breakdown(driver, race_model), width="stretch")
 
 
 # TELEMETRY ANIMATION
+mode = st.radio("Mode", ["Fastest Lap", "Overtake Highlights"], horizontal=True)
+
 year_tel = st.selectbox("Season", range(2026, 2017, -1))
-races_tel = tif1.get_events(year_tel)["EventName"].tolist() # fetch eventnames from tif1
+races_tel = tif1.get_events(year_tel)["EventName"].tolist()
 circuit_tel = st.selectbox("Grand Prix", races_tel)
 
 # cache fetched data to avoid repeated tif1 requests
-@st.cache_data 
+@st.cache_data
 def get_drivers(year_tel, circuit_tel):
-    # load race session according to inputs from above
     session = tif1.get_session(year_tel, circuit_tel, "Race")
     drivers_tel = session.drivers_df.copy()
-    # get full driver names for selectbox and map them to their abbreviations needed for the animation
     drivers_tel["FullName"] = drivers_tel["FirstName"] + " " + drivers_tel["LastName"]
     return dict(zip(drivers_tel["FullName"], drivers_tel["Driver"]))
 
-drivers_tel = get_drivers(year_tel, circuit_tel)
-driver1_tel = st.selectbox("Driver", sorted(drivers_tel))
-driver2_tel = st.selectbox("Opponent", sorted(drivers_tel), index=1)
 
-# animation
-if driver1_tel == driver2_tel:
-    st.info("🏎️ One driver, two cars? Even the FIA wouldn't allow that. Pick two different drivers!")
+if mode == "Fastest Lap":
+    drivers_tel = get_drivers(year_tel, circuit_tel)
+    names = sorted(drivers_tel)
+    driver1_tel = st.selectbox("Driver", names)
+    driver2_tel = st.selectbox("Opponent", names, index=min(1, len(names)-1))
+
+    if driver1_tel == driver2_tel:
+        st.info("🏎️ One driver, two cars? Even the FIA wouldn't allow that. Pick two different drivers!")
+    else:
+        try:
+            fig = telemetry_viz_2drivers_2modes(year_tel, circuit_tel, drivers_tel[driver1_tel], drivers_tel[driver2_tel])
+            st.plotly_chart(fig, width="stretch")
+        except Exception as e:
+            st.warning("🏎️ Telemetry unavailable for this combination.")
+            with st.expander("Technical details"):
+                st.code(str(e))
 
 else:
-    try:
-        fig = telemetry_viz_2drivers_messages_subplot(
-            year_tel, circuit_tel,
-            drivers_tel[driver1_tel], drivers_tel[driver2_tel]
-        )
-        st.plotly_chart(fig, width="stretch")
+    @st.cache_data
+    def load_highlights(year, circuit):
+        return get_overtake_highlights(year, circuit)
 
-    except Exception as e:
-        st.warning(
-            "🏎️ Oops! Looks like the telemetry couldn't keep up. "
-            "There might not be enough data for this race and driver combination "
-            "to produce our fabulous animation. Try another combination!"
-        )
+    highlights = load_highlights(year_tel, circuit_tel)
+    st.subheader("Race Highlights")
+    st.caption("Potential overtakes from lap-end position changes, excluding recorded pit-stop events.")
 
-        with st.expander("Technical details"):
-            st.code(str(e))
+    if highlights.empty:
+        st.info("No suitable overtakes found for this race.")
+
+    # this for-loop was coded by AI
+    for i, event in highlights.iterrows():
+
+        lap = int(event["LapNumber"])
+        driver1 = event["GainedAhead"]
+        driver2 = event["FellBehind"]
+
+        replay = (year_tel, circuit_tel, lap, driver1, driver2)
+
+        col1, col2 = st.columns([5, 1], vertical_alignment="center")
+
+        with col1:
+            st.markdown(
+                f"**Lap {lap}** — {event['Headline']} "
+                f"(P{int(event['NewPosition'])})"
+            )
+
+        with col2:
+            if st.button("▶ Replay", key=f"replay_{i}"):
+                st.session_state["replay"] = replay
+
+        # Show the replay directly below the selected event
+        if st.session_state.get("replay") == replay:
+            try:
+                fig = telemetry_viz_2drivers_2modes(
+                    year_tel, circuit_tel, driver1, driver2,
+                    fps=12, lap_number=lap
+                )
+                st.plotly_chart(fig, width="stretch")
+
+            except Exception as e:
+                st.exception(e)
+
+    replay = st.session_state.get("replay")
+    if replay is not None and replay[:2] == (year_tel, circuit_tel):
+        _, _, lap, driver1, driver2 = replay
+        st.subheader(f"Lap {lap}: {driver1} vs {driver2}")
+        try:
+            fig = telemetry_viz_2drivers_2modes(
+                year_tel, circuit_tel, driver1, driver2, fps=12, lap_number=lap
+            )
+            st.plotly_chart(fig, width="stretch")
+        except Exception as e:
+            st.warning("Replay unavailable for this event.")
+            with st.expander("Technical details"):
+                st.code(str(e))
 
 
 with st.expander("🤓 How does this work?"):
+    if mode == "Fastest Lap":
+        st.markdown("""
+        **1. Telemetry & Animation**
 
-    st.markdown("""
-    **1. Telemetry & Animation**
+        We retrieve the fastest-lap telemetry of both drivers using `tif1`. Since telemetry is recorded at irregular intervals, we interpolate their X/Y coordinates onto a common time grid of **20 frames per second**.
 
-    We retrieve the fastest-lap telemetry of both drivers using `tif1`. Since telemetry is recorded at irregular intervals, we interpolate their X/Y coordinates onto a common time grid of **20 frames per second**.
+        **2. Dividing the Circuit**
 
-    **2. Dividing the Circuit**
+        We split the circuit into sections using the `tif1` corner coordinates. Each corner is matched to the nearest telemetry point within a ±1% relative-distance window.
 
-    We split the circuit into sections using the `tif1` corner coordinates. Each corner is matched to the nearest telemetry point within a ±1% relative-distance window (to account for nearest points on a different part of the track).
+        **3. Comparing Section Times**
 
-    **3. Comparing Section Times**
+        We calculate how long each driver takes between consecutive corners. The difference tells us who gained time in each section.
 
-    We calculate how long each driver takes between consecutive corners. The difference tells us who gained time in each section.
+        **4. Synchronizing the Messages**
 
-    **4. Synchronizing the Messages**
+        A message appears only once **both drivers have completed the section**. We use `np.searchsorted()` to match these moments to the animation frames.
 
-    A message appears only once **both drivers have completed the section**. We use `np.searchsorted()` to match these moments to the animation frames.
+        ---
 
-    ---
-
-    **⚠️**
-
-    Corner positions and telemetry samples do not always match perfectly. Section times are therefore approximations rather than official timing measurements.
-
-    Also, we're comparing each driver's *fastest lap*, not necessarily laps driven at the same moment in the race.
-    """)
+        **⚠️** Corner positions and telemetry samples do not always match perfectly, so section times are approximate. Both drivers' fastest laps start at time zero; they are not necessarily from the same moment in the race.
+        """)
+    else:
+        st.markdown("""
+        We identify potential overtakes when two drivers exchange their relative order between consecutive laps, excluding laps with recorded pit entries or exits. In the replay, the cars use the same `SessionTime` clock. We locate an approximate crossing using `RelativeDistance` and show up to 10 seconds before and after it.
+        """)
