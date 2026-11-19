@@ -22,7 +22,10 @@ FILES = [
     "f1db-races.csv",
     "f1db-races-race-results.csv",
     "f1db-races-qualifying-results.csv",
-    "f1db-circuits.csv"
+    "f1db-circuits.csv",
+    "f1db-races-sprint-race-results.csv",
+    "f1db-races-driver-standings.csv",
+    "f1db-races-constructor-standings.csv",
 ]
 
 # opens the URL, if it takes longer then 60s it will be aborted

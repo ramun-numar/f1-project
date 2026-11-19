@@ -1,3 +1,6 @@
+# idea: also make simulations to get predictions
+
+
 from models.features import (
     prepare_features,
     pre_race_numeric_features,

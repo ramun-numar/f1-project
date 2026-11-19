@@ -69,7 +69,7 @@ PROJECT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_DIR / "data" / "raw"
 
 
-def prepare_features(upcoming_race=None):
+def prepare_features(upcoming_race=None, history_cutoff=None):
 
     #### IMPORT DATA ####
 
@@ -114,6 +114,18 @@ def prepare_features(upcoming_race=None):
         on=["raceId", "driverId"],
         how="left",
         validate="one_to_one")
+
+    # restrict observed history before calculating any rolling features
+    if history_cutoff is not None:
+        model_data = model_data.loc[
+            pd.to_datetime(model_data["date"]).le(
+                pd.Timestamp(history_cutoff)
+            )
+        ].copy()
+
+        model_data = model_data.sort_values(
+            ["date", "raceId", "driverId"]
+        ).reset_index(drop=True)
 
     # Add one upcoming race before calculating historical features, so the model
     # receives the same features as during training, based only on past race results.
