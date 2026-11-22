@@ -1,0 +1,11 @@
+# Streamlit reads this file automatically when you run `streamlit run` from the
+# repo root. The [theme] section restyles every built-in widget at once,
+# so we don't need to write CSS for the basic look.
+
+[theme]
+base = "dark"
+primaryColor = "#E10600"            # F1 red: buttons, links, active nav tab, sliders
+backgroundColor = "#0B0B10"         # page background (near-black)
+secondaryBackgroundColor = "#15151E" # inputs, selectboxes, sidebar
+textColor = "#F5F5F7"
+borderColor = "#2A2A35"             # card borders (st.container(border=True), st.metric(border=True))
