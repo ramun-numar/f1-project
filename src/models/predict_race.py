@@ -135,8 +135,6 @@ prediction = prediction_data[[
 # index = False to leave out the index when printing
 print(prediction.to_string(index=False))
 
-# use readable folders for the current predictions
-created_at = pd.Timestamp.now(tz="UTC")
 
 race_name = RACE_FOLDER.split("-", 1)[1]
 relative_folder = Path(str(YEAR)) / race_name / MODE
@@ -162,7 +160,6 @@ joblib.dump(race_model, output_dir / "model.joblib")
 
 # record the prediction settings and information state
 metadata = {
-    "created_at": created_at.isoformat(),
     "race_date": race_date.isoformat(),
     "race_id": int(race_info["id"]),
     "year": YEAR,
@@ -173,7 +170,7 @@ metadata = {
     "numeric_features": numeric_features,
     "categorical_features": categorical_features,
     "model_type": "Ridge",
-    "alpha": race_model.named_steps["regression"].alpha,
+    "alpha": race_model.named_steps["regression"].alpha
 }
 
 with (output_dir / "metadata.json").open("w", encoding="utf-8") as file:

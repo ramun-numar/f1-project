@@ -594,10 +594,6 @@ print(
 
 #### STORAGE ####
 
-# name the prediction after the grand prix used as the starting point
-created_at = pd.Timestamp.now(tz="UTC")
-
-
 race_name = latest_race["grandPrixId"]
 relative_folder = (
     Path("championship")
@@ -638,7 +634,6 @@ season_results.to_csv(
 
 # record the information state and simulation settings
 metadata = {
-    "created_at": created_at.isoformat(),
     "year": YEAR,
     "starting_round": latest_round,
     "starting_race_id": latest_race_id,

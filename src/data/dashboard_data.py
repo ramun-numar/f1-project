@@ -6,7 +6,7 @@ Every public function returns a plain list of dicts, the shape the dashboard's
 card helpers expect, so the page code never deals with pandas.
 """
 from pathlib import Path
-
+import json
 import pandas as pd
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -113,13 +113,18 @@ def championship_prediction(tables, season, top_n=4):
     Picks the run with the highest round, then the newest timestamp folder
     (timestamps sort correctly as text, e.g. 20261119T192336Z).
     """
-    runs = sorted(
-        (CHAMPIONSHIP_DIR / str(season)).glob("after_round_*/*/driver_predictions.csv"),
-        key=lambda p: (int(p.parent.parent.name.removeprefix("after_round_")), p.parent.name),
-    )
+    # read the starting round from the prediction metadata
+    def run_key(path):
+        metadata = json.loads((path.parent / "metadata.json").read_text(encoding="utf-8"))
+        return metadata["starting_round"]
+
+    runs = sorted((CHAMPIONSHIP_DIR / str(season)).glob("after_*/driver_predictions.csv"), key=run_key)
+
     if not runs:
         return None
+    
     run_dir = runs[-1].parent
+    metadata = json.loads((run_dir / "metadata.json").read_text(encoding="utf-8"))
 
     def rows(file, id_col, names):
         df = pd.read_csv(run_dir / file).sort_values("average_final_points", ascending=False)
@@ -133,7 +138,7 @@ def championship_prediction(tables, season, top_n=4):
         ]
 
     return {
-        "after_round": int(run_dir.parent.name.removeprefix("after_round_")),
+        "after_round": int(metadata["starting_round"]),
         "drivers": rows("driver_predictions.csv", "driverId", tables["drivers"]),
         "teams": rows("constructor_predictions.csv", "constructorId", tables["teams"]),
     }
