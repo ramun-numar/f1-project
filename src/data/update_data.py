@@ -26,6 +26,10 @@ FILES = [
     "f1db-races-sprint-race-results.csv",
     "f1db-races-driver-standings.csv",
     "f1db-races-constructor-standings.csv",
+    # display names used by the dashboard page
+    "f1db-drivers.csv",
+    "f1db-constructors.csv",
+    "f1db-grands-prix.csv",
 ]
 
 # opens the URL, if it takes longer then 60s it will be aborted
