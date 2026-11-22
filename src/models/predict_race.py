@@ -1,6 +1,6 @@
 # idea: also make simulations to get predictions
 
-
+import argparse
 from models.features import (
     prepare_features,
     pre_race_numeric_features,
@@ -26,12 +26,28 @@ RACE_FOLDER = "20-sao-paulo"
 
 MODE = "post"
 
+# allow the update script to override the prediction settings
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--year", type=int, default=YEAR)
+    parser.add_argument("--race-folder", default=RACE_FOLDER)
+    parser.add_argument("--mode", choices=["pre", "post"], default=MODE)
+
+    settings = parser.parse_args()
+
+    YEAR = settings.year
+    RACE_FOLDER = settings.race_folder
+    MODE = settings.mode
+
+
 if MODE == "pre":
     numeric_features = pre_race_numeric_features
 elif MODE == "post":
     numeric_features = post_qualifying_numeric_features
 else:
     raise ValueError("Prediction mode must be 'pre' or 'post'")
+
 
 # Path to project root (src/models/predict_race.py -> go up 3 levels to project root)
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -119,28 +135,32 @@ prediction = prediction_data[[
 # index = False to leave out the index when printing
 print(prediction.to_string(index=False))
 
-# create a separate folder for each prediction run
+# use readable folders for the current predictions
 created_at = pd.Timestamp.now(tz="UTC")
-run_id = created_at.strftime("%Y%m%dT%H%M%SZ")
 
-output_dir = (
-    PROJECT_DIR / "data" / "predictions" /
-    str(YEAR) / RACE_FOLDER / MODE / run_id
+race_name = RACE_FOLDER.split("-", 1)[1]
+relative_folder = Path(str(YEAR)) / race_name / MODE
+
+# save directly to the readable prediction folder
+output_dir = PROJECT_DIR / "data" / "predictions" / relative_folder
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# save the complete prediction table
+prediction_data.sort_values("predicted_position").to_csv(
+    output_dir / "prediction.csv",
+    index=False
 )
 
-output_dir.mkdir(parents=True, exist_ok=False)
+# preserve the training data and fitted model
+train_data.to_csv(
+    output_dir / "training_data.csv",
+    index=False
+)
 
-# save the complete prediction table for dashboard use
-prediction_data.sort_values("predicted_position").to_csv(
-    output_dir / "prediction.csv", index=False)
 
-# preserve the exact training data used in this run
-train_data.to_csv(output_dir / "training_data.csv", index=False)
-
-# save the fitted pipeline for predictions and feature explanations
 joblib.dump(race_model, output_dir / "model.joblib")
 
-# distinguish the creation time from the date of the predicted race
+# record the prediction settings and information state
 metadata = {
     "created_at": created_at.isoformat(),
     "race_date": race_date.isoformat(),
@@ -159,4 +179,5 @@ metadata = {
 with (output_dir / "metadata.json").open("w", encoding="utf-8") as file:
     json.dump(metadata, file, indent=2, default=str)
 
-print(f"Prediction saved to: {output_dir}")
+
+print(f"Latest predictions saved to: {output_dir}")

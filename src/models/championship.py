@@ -1,6 +1,7 @@
 # currently we use the same prediction for sprints and races but add different noise
 # myb later on create sprint model
 
+import argparse
 import json
 from pathlib import Path
 import pandas as pd
@@ -16,8 +17,27 @@ from models.model import create_model
 
 # championship settings
 YEAR = 2026
-AS_OF_ROUND = 10
+AS_OF_ROUND = None
 RANDOM_SEED = 13
+
+# allow the update script to select the season and latest available standings
+# checks if script was started directly. 
+# If championship was imported by another file, this section gets skipped
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--year", type=int, default=YEAR)
+    parser.add_argument("--latest", action="store_true")
+    parser.add_argument("--as-of-round", type=int, default=AS_OF_ROUND)
+
+    settings = parser.parse_args()
+
+    YEAR = settings.year
+    AS_OF_ROUND = settings.as_of_round
+
+    if settings.latest:
+        AS_OF_ROUND = None
+
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_DIR / "data" / "raw"
@@ -64,6 +84,12 @@ if completed_races.empty:
 latest_race = completed_races.iloc[-1]
 latest_race_id = int(latest_race["id"])
 latest_round = int(latest_race["round"])
+
+print(
+    f"\nChampionship forecast for {YEAR} "
+    f"after round {latest_round}: {latest_race['officialName']}",
+    flush=True,
+)
 
 # use the same race as the starting point for both championships
 current_drivers = driver_standings.loc[
@@ -229,7 +255,7 @@ future_predictions = (
 # print("Prediction rows:", len(future_predictions))
 
 
-#### CREATE FUNCTION FOR RACE SIMULATION ####
+#### CREATE FUNCTION FOR RACE SIMULATION AND ADD UNCERTAINTY ####
 
 # load the uncertainty estimated from walk-forward errors
 validation_errors = pd.read_csv(
@@ -244,7 +270,25 @@ validation_errors = validation_errors.loc[
     pd.to_datetime(validation_errors["date"]).le(cutoff)
 ].copy()
 
+
+# estimate the total variation from historical prediction errors
 score_noise_std = validation_errors["ranking_error"].std()
+
+# estimate persistent team variation from average errors per team and season
+team_season_errors = validation_errors.groupby(
+    ["year", "constructorId"]
+)["ranking_error"].mean()
+
+team_season_noise_std = min(
+    team_season_errors.std(),
+    score_noise_std
+)
+
+# split the existing variance between persistent team and event variation
+event_noise_std = np.sqrt(
+    max(score_noise_std**2 - team_season_noise_std**2, 0)
+)
+
 # create the rng so that it continues for each season, ensuring different randomization
 rng = np.random.default_rng(RANDOM_SEED)
 
@@ -326,6 +370,18 @@ def simulate_remaining_season(random_generator):
     constructor_points = constructor_start_points.copy()
     event_results = []
 
+    # draw one shared offset per team for the entire simulated season
+    teams = sorted(lineup["constructorId"].unique())
+
+    team_offsets = pd.Series(
+        random_generator.normal(
+            loc=0,
+            scale=team_season_noise_std,
+            size=len(teams),
+        ),
+        index=teams
+    )
+
     for _, future_race in remaining_races.iterrows():
         race_id = int(future_race["id"])
 
@@ -347,13 +403,14 @@ def simulate_remaining_season(random_generator):
         for event_type, points_table in events:
             simulated = expected.copy()
 
-            # draw new score deviations for each event
+            # combine the baseline score with persistent team and fresh event variation
             simulated["simulated_score"] = (
                 simulated["predicted_score"]
+                + simulated["constructorId"].map(team_offsets)
                 + random_generator.normal(
                     loc=0,
-                    scale=score_noise_std,
-                    size=len(simulated)
+                    scale=event_noise_std,
+                    size=len(simulated),
                 )
             )
 
@@ -519,24 +576,38 @@ constructor_summary = pd.DataFrame({
 )
 
 
+print("\nDriver championship predictions:")
+print(driver_summary.round(2).to_string())
+
+print("\nConstructor championship predictions:")
+print(constructor_summary.round(2).to_string())
+
+print(
+    "\nUnresolved driver ties (%):",
+    unresolved_driver_ties / n_simulations * 100
+)
+print(
+    "Unresolved constructor ties (%):",
+    unresolved_constructor_ties / n_simulations * 100
+)
+
 
 #### STORAGE ####
 
-# create a separate folder for each championship prediction
+# name the prediction after the grand prix used as the starting point
 created_at = pd.Timestamp.now(tz="UTC")
-run_id = created_at.strftime("%Y%m%dT%H%M%SZ")
 
-output_dir = (
-    PROJECT_DIR
-    / "data"
-    / "predictions"
-    / "championship"
+
+race_name = latest_race["grandPrixId"]
+relative_folder = (
+    Path("championship")
     / str(YEAR)
-    / f"after_round_{latest_round}"
-    / run_id
+    / f"after_{race_name}"
 )
 
-output_dir.mkdir(parents=True, exist_ok=False)
+# save directly to the readable prediction folder
+output_dir = PROJECT_DIR / "data" / "predictions" / relative_folder
+output_dir.mkdir(parents=True, exist_ok=True)
 
 # save both championship prediction tables
 driver_summary.to_csv(
@@ -549,7 +620,7 @@ constructor_summary.to_csv(
     index_label="constructorId"
 )
 
-# preserve the scores, calendar and actual results used by the simulation
+# preserve the simulation inputs
 future_predictions.to_csv(
     output_dir / "future_scores.csv",
     index=False
@@ -576,6 +647,8 @@ metadata = {
     "n_simulations": n_simulations,
     "random_seed": RANDOM_SEED,
     "score_noise_std": float(score_noise_std),
+    "team_season_noise_std": float(team_season_noise_std),
+    "event_noise_std": float(event_noise_std),
     "model_type": "Ridge",
     "alpha": float(season_model.named_steps["regression"].alpha),
     "driver_start_points": driver_start_points.to_dict(),
@@ -586,14 +659,14 @@ metadata = {
     "unresolved_driver_ties": unresolved_driver_ties,
     "unresolved_constructor_ties": unresolved_constructor_ties,
     "assumptions": [
-        "current estimated form remains fixed for the remaining season",
+        "baseline scores remain fixed with a shared team offset per simulated season",
         "the latest known lineup remains unchanged",
         "sprints use grand prix scores and the same noise scale",
-        "future events award full points",
+        "future events award full points"
     ]
 }
 
 with (output_dir / "metadata.json").open("w", encoding="utf-8") as file:
     json.dump(metadata, file, indent=2, default=str)
 
-print(f"\nChampionship predictions saved to: {output_dir}")
+print(f"\nLatest championship predictions saved to: {output_dir}")
