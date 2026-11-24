@@ -1,0 +1,21 @@
+raceId,year,round,positionDisplayOrder,positionNumber,positionText,driverNumber,driverId,constructorId,engineManufacturerId,tyreManufacturerId,sharedCar,laps,time,timeMillis,timePenalty,timePenaltyMillis,gap,gapMillis,gapLaps,interval,intervalMillis,reasonRetired,points,polePosition,qualificationPositionNumber,qualificationPositionText,gridPositionNumber,gridPositionText,positionsGained,pitStops,fastestLap,driverOfTheDay,grandSlam
+1058,2022,1,1,1.0,1,16,charles-leclerc,ferrari,ferrari,pirelli,False,57.0,1:37:33.584,5853584.0,,,,,,,,,26.0,True,1.0,1,1.0,1,0.0,3.0,True,True,False
+1058,2022,1,2,2.0,2,55,carlos-sainz-jr,ferrari,ferrari,pirelli,False,57.0,1:37:39.182,5859182.0,,,+5.598,5598.0,,+5.598,5598.0,,18.0,False,3.0,3,3.0,3,1.0,3.0,False,False,False
+1058,2022,1,3,3.0,3,44,lewis-hamilton,mercedes,mercedes,pirelli,False,57.0,1:37:43.259,5863259.0,,,+9.675,9675.0,,+4.077,4077.0,,15.0,False,5.0,5,5.0,5,2.0,3.0,False,False,False
+1058,2022,1,4,4.0,4,63,george-russell,mercedes,mercedes,pirelli,False,57.0,1:37:44.795,5864795.0,,,+11.211,11211.0,,+1.536,1536.0,,12.0,False,9.0,9,9.0,9,5.0,3.0,False,False,False
+1058,2022,1,5,5.0,5,20,kevin-magnussen,haas,ferrari,pirelli,False,57.0,1:37:48.338,5868338.0,,,+14.754,14754.0,,+3.543,3543.0,,10.0,False,7.0,7,7.0,7,2.0,3.0,False,False,False
+1058,2022,1,6,6.0,6,77,valtteri-bottas,alfa-romeo,ferrari,pirelli,False,57.0,1:37:49.703,5869703.0,,,+16.119,16119.0,,+1.365,1365.0,,8.0,False,6.0,6,6.0,6,0.0,3.0,False,False,False
+1058,2022,1,7,7.0,7,31,esteban-ocon,alpine,renault,pirelli,False,57.0,1:37:53.007,5873007.0,,,+19.423,19423.0,,+3.304,3304.0,,6.0,False,11.0,11,11.0,11,4.0,3.0,False,False,False
+1058,2022,1,8,8.0,8,22,yuki-tsunoda,alphatauri,rbpt,pirelli,False,57.0,1:37:53.970,5873970.0,,,+20.386,20386.0,,+0.963,963.0,,4.0,False,16.0,16,16.0,16,8.0,3.0,False,False,False
+1058,2022,1,9,9.0,9,14,fernando-alonso,alpine,renault,pirelli,False,57.0,1:37:55.974,5875974.0,,,+22.390,22390.0,,+2.004,2004.0,,2.0,False,8.0,8,8.0,8,-1.0,3.0,False,False,False
+1058,2022,1,10,10.0,10,24,guanyu-zhou,alfa-romeo,ferrari,pirelli,False,57.0,1:37:56.648,5876648.0,,,+23.064,23064.0,,+0.674,674.0,,1.0,False,15.0,15,15.0,15,5.0,3.0,False,False,False
+1058,2022,1,11,11.0,11,47,mick-schumacher,haas,ferrari,pirelli,False,57.0,1:38:06.158,5886158.0,,,+32.574,32574.0,,+9.510,9510.0,,,False,12.0,12,12.0,12,1.0,2.0,False,False,False
+1058,2022,1,12,12.0,12,18,lance-stroll,aston-martin,mercedes,pirelli,False,57.0,1:38:19.457,5899457.0,,,+45.873,45873.0,,+13.299,13299.0,,,False,19.0,19,19.0,19,7.0,3.0,False,False,False
+1058,2022,1,13,13.0,13,23,alexander-albon,williams,mercedes,pirelli,False,57.0,1:38:27.516,5907516.0,,,+53.932,53932.0,,+8.059,8059.0,,,False,14.0,14,14.0,14,1.0,3.0,False,False,False
+1058,2022,1,14,14.0,14,3,daniel-ricciardo,mclaren,mercedes,pirelli,False,57.0,1:38:28.559,5908559.0,,,+54.975,54975.0,,+1.043,1043.0,,,False,18.0,18,18.0,18,4.0,3.0,False,False,False
+1058,2022,1,15,15.0,15,4,lando-norris,mclaren,mercedes,pirelli,False,57.0,1:38:29.919,5909919.0,,,+56.335,56335.0,,+1.360,1360.0,,,False,13.0,13,13.0,13,-2.0,3.0,False,False,False
+1058,2022,1,16,16.0,16,6,nicholas-latifi,williams,mercedes,pirelli,False,57.0,1:38:35.379,5915379.0,,,+1:01.795,61795.0,,+5.460,5460.0,,,False,20.0,20,20.0,20,4.0,3.0,False,False,False
+1058,2022,1,17,17.0,17,27,nico-hulkenberg,aston-martin,mercedes,pirelli,False,57.0,1:38:37.413,5917413.0,,,+1:03.829,63829.0,,+2.034,2034.0,,,False,17.0,17,17.0,17,0.0,3.0,False,False,False
+1058,2022,1,18,18.0,18,11,sergio-perez,red-bull,rbpt,pirelli,False,56.0,,,,,,,,,,Fuel system,,False,4.0,4,4.0,4,-14.0,3.0,False,False,False
+1058,2022,1,19,19.0,19,1,max-verstappen,red-bull,rbpt,pirelli,False,54.0,,,,,,,,,,Fuel system,,False,2.0,2,2.0,2,-17.0,3.0,False,False,False
+1058,2022,1,20,,DNF,10,pierre-gasly,alphatauri,rbpt,pirelli,False,44.0,,,,,,,,,,Power unit,,False,10.0,10,10.0,10,,2.0,False,False,False

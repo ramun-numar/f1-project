@@ -292,8 +292,8 @@ event_noise_std = np.sqrt(
 # create the rng so that it continues for each season, ensuring different randomization
 rng = np.random.default_rng(RANDOM_SEED)
 
-if YEAR not in {2025, 2026}:
-    raise ValueError("Check the scoring rules for this season")
+if YEAR not in range(2020, 2027):
+    raise ValueError("Supported seasons are 2020 to 2026")
 
 # use full-distance grand prix and sprint points
 race_points = {
@@ -361,6 +361,14 @@ constructor_start_points = (
         additional_sprints.groupby("constructorId")["points"].sum(),
         fill_value=0
     )
+)
+
+# add lineup teams missing from the standings with zero starting points
+constructor_start_points = constructor_start_points.reindex(
+    constructor_start_points.index.union(
+        pd.Index(lineup["constructorId"].unique())
+    ),
+    fill_value=0
 )
 
 
@@ -615,6 +623,19 @@ constructor_summary.to_csv(
     output_dir / "constructor_predictions.csv",
     index_label="constructorId"
 )
+
+# create one row per simulated season and one column per driver
+driver_simulations = pd.DataFrame(driver_runs)
+
+# number the simulations starting at one
+driver_simulations.index = range(1, len(driver_simulations) + 1)
+
+# save the individual final points for the distribution charts
+driver_simulations.to_csv(
+    output_dir / "driver_simulations.csv",
+    index_label="simulation_id",
+)
+
 
 # preserve the simulation inputs
 future_predictions.to_csv(

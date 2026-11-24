@@ -142,3 +142,96 @@ def championship_prediction(tables, season, top_n=4):
         "drivers": rows("driver_predictions.csv", "driverId", tables["drivers"]),
         "teams": rows("constructor_predictions.csv", "constructorId", tables["teams"]),
     }
+
+
+
+def championship_timeline(tables, season):
+    rows = []
+
+    # read the saved driver predictions from each available round
+    for path in (CHAMPIONSHIP_DIR / str(season)).glob("after_*/driver_predictions.csv"):
+        metadata = json.loads((path.parent / "metadata.json").read_text(encoding="utf-8"))
+        predictions = pd.read_csv(path)
+
+        # identify each driver's latest known team at this forecast's starting round
+        driver_teams = (
+            tables["results"].loc[
+                tables["results"]["year"].eq(season)
+                & tables["results"]["round"].le(metadata["starting_round"])
+            ]
+            .sort_values("round")
+            .drop_duplicates("driverId", keep="last")
+            .set_index("driverId")["constructorId"]
+        )
+
+        # attach the starting round and display name to each driver's probability
+        for _, driver in predictions.iterrows():
+            driver_id = driver["driverId"]
+
+            rows.append({
+                "round": int(metadata["starting_round"]),
+                "driverId": driver_id,
+                "constructorId": driver_teams.get(driver_id, "unknown"),
+                "average_final_points": float(driver["average_final_points"]),
+                "name": tables["drivers"].get(driver_id, driver_id),
+                "title_probability_pct": float(
+                    driver["title_probability_pct"]
+                )
+            })
+
+    # order the timeline chronologically and consistently within each round
+    return sorted(
+        rows,
+        key=lambda row: (row["round"], row["driverId"])
+    )
+
+
+def championship_simulations(season, starting_round):
+    # find the saved simulation results for the selected starting point
+    for path in (CHAMPIONSHIP_DIR / str(season)).glob(
+        "after_*/metadata.json"
+    ):
+        metadata = json.loads(path.read_text(encoding="utf-8"))
+
+        if int(metadata["starting_round"]) == int(starting_round):
+            simulation_path = path.parent / "driver_simulations.csv"
+
+            if simulation_path.is_file():
+                return pd.read_csv(
+                    simulation_path,
+                    index_col="simulation_id",
+                )
+
+    return None
+
+def constructor_timeline(tables, season):
+    rows = []
+
+    # read the saved constructor predictions from every available round
+    for path in (CHAMPIONSHIP_DIR / str(season)).glob(
+        "after_*/constructor_predictions.csv"
+    ):
+        metadata = json.loads(
+            (path.parent / "metadata.json").read_text(encoding="utf-8")
+        )
+        predictions = pd.read_csv(path)
+
+        for _, constructor in predictions.iterrows():
+            constructor_id = constructor["constructorId"]
+
+            rows.append({
+                "round": int(metadata["starting_round"]),
+                "constructorId": constructor_id,
+                "name": tables["teams"].get(constructor_id, constructor_id),
+                "title_probability_pct": float(
+                    constructor["title_probability_pct"]
+                ),
+                "average_final_points": float(
+                    constructor["average_final_points"]
+                ),
+            })
+
+    return sorted(
+        rows,
+        key=lambda row: (row["round"], row["constructorId"]),
+    )

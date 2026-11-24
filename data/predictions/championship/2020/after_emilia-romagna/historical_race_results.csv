@@ -1,0 +1,261 @@
+raceId,year,round,positionDisplayOrder,positionNumber,positionText,driverNumber,driverId,constructorId,engineManufacturerId,tyreManufacturerId,sharedCar,laps,time,timeMillis,timePenalty,timePenaltyMillis,gap,gapMillis,gapLaps,interval,intervalMillis,reasonRetired,points,polePosition,qualificationPositionNumber,qualificationPositionText,gridPositionNumber,gridPositionText,positionsGained,pitStops,fastestLap,driverOfTheDay,grandSlam
+1019,2020,1,1,1.0,1,77,valtteri-bottas,mercedes,mercedes,pirelli,False,71.0,1:30:55.739,5455739.0,,,,,,,,,25.0,True,1.0,1,1.0,1,0.0,2.0,False,False,False
+1019,2020,1,2,2.0,2,16,charles-leclerc,ferrari,ferrari,pirelli,False,71.0,1:30:58.439,5458439.0,,,+2.700,2700.0,,+2.700,2700.0,,18.0,False,7.0,7,7.0,7,5.0,3.0,False,False,False
+1019,2020,1,3,3.0,3,4,lando-norris,mclaren,renault,pirelli,False,71.0,1:31:01.230,5461230.0,,,+5.491,5491.0,,+2.791,2791.0,,16.0,False,4.0,4,3.0,3,0.0,3.0,True,False,False
+1019,2020,1,4,4.0,4,44,lewis-hamilton,mercedes,mercedes,pirelli,False,71.0,1:31:01.428,5461428.0,5.0,5000.0,+5.689,5689.0,,+0.198,198.0,,12.0,False,2.0,2,5.0,5,1.0,2.0,False,False,False
+1019,2020,1,5,5.0,5,55,carlos-sainz-jr,mclaren,renault,pirelli,False,71.0,1:31:04.642,5464642.0,,,+8.903,8903.0,,+3.214,3214.0,,10.0,False,8.0,8,8.0,8,3.0,3.0,False,False,False
+1019,2020,1,6,6.0,6,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,71.0,1:31:10.831,5470831.0,5.0,5000.0,+15.092,15092.0,,+6.189,6189.0,,8.0,False,6.0,6,6.0,6,0.0,2.0,False,False,False
+1019,2020,1,7,7.0,7,10,pierre-gasly,alphatauri,honda,pirelli,False,71.0,1:31:12.421,5472421.0,,,+16.682,16682.0,,+1.590,1590.0,,6.0,False,12.0,12,12.0,12,5.0,2.0,False,False,False
+1019,2020,1,8,8.0,8,31,esteban-ocon,renault,renault,pirelli,False,71.0,1:31:13.195,5473195.0,,,+17.456,17456.0,,+0.774,774.0,,4.0,False,14.0,14,14.0,14,6.0,2.0,False,False,False
+1019,2020,1,9,9.0,9,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,71.0,1:31:16.885,5476885.0,,,+21.146,21146.0,,+3.690,3690.0,,2.0,False,18.0,18,18.0,18,9.0,3.0,False,False,False
+1019,2020,1,10,10.0,10,5,sebastian-vettel,ferrari,ferrari,pirelli,False,71.0,1:31:20.284,5480284.0,,,+24.545,24545.0,,+3.399,3399.0,,1.0,False,11.0,11,11.0,11,1.0,3.0,False,False,False
+1019,2020,1,11,11.0,11,6,nicholas-latifi,williams,mercedes,pirelli,False,71.0,1:31:27.389,5487389.0,,,+31.650,31650.0,,+7.105,7105.0,,,False,20.0,20,20.0,20,9.0,3.0,False,False,False
+1019,2020,1,12,12.0,12,26,daniil-kvyat,alphatauri,honda,pirelli,False,69.0,,,,,,,,,,Suspension,,False,13.0,13,13.0,13,1.0,3.0,False,False,False
+1019,2020,1,13,13.0,13,23,alexander-albon,red-bull,honda,pirelli,False,67.0,,,,,,,,,,Electronics,,False,5.0,5,4.0,4,-9.0,3.0,False,True,False
+1019,2020,1,14,,DNF,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,53.0,,,,,,,,,,Wheel,,False,19.0,19,19.0,19,,2.0,False,False,False
+1019,2020,1,15,,DNF,63,george-russell,williams,mercedes,pirelli,False,49.0,,,,,,,,,,Fuel pressure,,False,17.0,17,17.0,17,,1.0,False,False,False
+1019,2020,1,16,,DNF,8,romain-grosjean,haas,ferrari,pirelli,False,49.0,,,,,,,,,,Brakes,,False,15.0,15,15.0,15,,1.0,False,False,False
+1019,2020,1,17,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,24.0,,,,,,,,,,Brakes,,False,16.0,16,16.0,16,,0.0,False,False,False
+1019,2020,1,18,,DNF,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,20.0,,,,,,,,,,Engine,,False,9.0,9,9.0,9,,0.0,False,False,False
+1019,2020,1,19,,DNF,3,daniel-ricciardo,renault,renault,pirelli,False,17.0,,,,,,,,,,Overheating,,False,10.0,10,10.0,10,,0.0,False,False,False
+1019,2020,1,20,,DNF,33,max-verstappen,red-bull,honda,pirelli,False,11.0,,,,,,,,,,Electronics,,False,3.0,3,2.0,2,,0.0,False,False,False
+1020,2020,2,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,71.0,1:22:50.683,4970683.0,,,,,,,,,25.0,True,1.0,1,1.0,1,0.0,1.0,False,False,False
+1020,2020,2,2,2.0,2,77,valtteri-bottas,mercedes,mercedes,pirelli,False,71.0,1:23:04.402,4984402.0,,,+13.719,13719.0,,+13.719,13719.0,,18.0,False,4.0,4,4.0,4,2.0,1.0,False,False,False
+1020,2020,2,3,3.0,3,33,max-verstappen,red-bull,honda,pirelli,False,71.0,1:23:24.381,5004381.0,,,+33.698,33698.0,,+19.979,19979.0,,15.0,False,2.0,2,2.0,2,-1.0,2.0,False,False,False
+1020,2020,2,4,4.0,4,23,alexander-albon,red-bull,honda,pirelli,False,71.0,1:23:35.083,5015083.0,,,+44.400,44400.0,,+10.702,10702.0,,12.0,False,7.0,7,6.0,6,2.0,1.0,False,False,False
+1020,2020,2,5,5.0,5,4,lando-norris,mclaren,renault,pirelli,False,71.0,1:23:52.153,5032153.0,,,+1:01.470,61470.0,,+17.070,17070.0,,10.0,False,6.0,6,9.0,9,4.0,1.0,False,False,False
+1020,2020,2,6,6.0,6,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,71.0,1:23:53.070,5033070.0,,,+1:02.387,62387.0,,+0.917,917.0,,8.0,False,17.0,17,17.0,17,11.0,1.0,False,True,False
+1020,2020,2,7,7.0,7,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,71.0,1:23:53.136,5033136.0,,,+1:02.453,62453.0,,+0.066,66.0,,6.0,False,13.0,13,13.0,13,6.0,1.0,False,False,False
+1020,2020,2,8,8.0,8,3,daniel-ricciardo,renault,renault,pirelli,False,71.0,1:23:53.274,5033274.0,,,+1:02.591,62591.0,,+0.138,138.0,,4.0,False,9.0,9,8.0,8,0.0,1.0,False,False,False
+1020,2020,2,9,9.0,9,55,carlos-sainz-jr,mclaren,renault,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,3.0,False,3.0,3,3.0,3,-6.0,2.0,True,False,False
+1020,2020,2,10,10.0,10,26,daniil-kvyat,alphatauri,honda,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,1.0,False,14.0,14,14.0,14,4.0,1.0,False,False,False
+1020,2020,2,11,11.0,11,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,,False,16.0,16,16.0,16,5.0,1.0,False,False,False
+1020,2020,2,12,12.0,12,20,kevin-magnussen,haas,ferrari,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,,False,15.0,15,15.0,15,3.0,1.0,False,False,False
+1020,2020,2,13,13.0,13,8,romain-grosjean,haas,ferrari,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,,False,20.0,20,,PL,7.0,1.0,False,False,False
+1020,2020,2,14,14.0,14,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,,False,19.0,19,19.0,19,5.0,1.0,False,False,False
+1020,2020,2,15,15.0,15,10,pierre-gasly,alphatauri,honda,pirelli,False,70.0,,,,,+1 lap,,1.0,,,,,False,8.0,8,7.0,7,-8.0,2.0,False,False,False
+1020,2020,2,16,16.0,16,63,george-russell,williams,mercedes,pirelli,False,69.0,,,,,+2 laps,,2.0,,,,,False,12.0,12,12.0,12,-4.0,1.0,False,False,False
+1020,2020,2,17,17.0,17,6,nicholas-latifi,williams,mercedes,pirelli,False,69.0,,,,,+2 laps,,2.0,,,,,False,18.0,18,18.0,18,1.0,1.0,False,False,False
+1020,2020,2,18,,DNF,31,esteban-ocon,renault,renault,pirelli,False,25.0,,,,,,,,,,Overheating,,False,5.0,5,5.0,5,,0.0,False,False,False
+1020,2020,2,19,,DNF,16,charles-leclerc,ferrari,ferrari,pirelli,False,4.0,,,,,,,,,,Collision damage,,False,11.0,11,11.0,11,,1.0,False,False,False
+1020,2020,2,20,,DNF,5,sebastian-vettel,ferrari,ferrari,pirelli,False,1.0,,,,,,,,,,Collision damage,,False,10.0,10,10.0,10,,0.0,False,False,False
+1021,2020,3,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,70.0,1:36:12.473,5772473.0,,,,,,,,,26.0,True,1.0,1,1.0,1,0.0,3.0,True,False,False
+1021,2020,3,2,2.0,2,33,max-verstappen,red-bull,honda,pirelli,False,70.0,1:36:21.175,5781175.0,,,+8.702,8702.0,,+8.702,8702.0,,18.0,False,7.0,7,7.0,7,5.0,2.0,False,True,False
+1021,2020,3,3,3.0,3,77,valtteri-bottas,mercedes,mercedes,pirelli,False,70.0,1:36:21.925,5781925.0,,,+9.452,9452.0,,+0.750,750.0,,15.0,False,2.0,2,2.0,2,-1.0,3.0,False,False,False
+1021,2020,3,4,4.0,4,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,70.0,1:37:10.052,5830052.0,,,+57.579,57579.0,,+48.127,48127.0,,12.0,False,3.0,3,3.0,3,-1.0,3.0,False,False,False
+1021,2020,3,5,5.0,5,23,alexander-albon,red-bull,honda,pirelli,False,70.0,1:37:30.789,5850789.0,,,+1:18.316,78316.0,,+20.737,20737.0,,10.0,False,13.0,13,13.0,13,8.0,2.0,False,False,False
+1021,2020,3,6,6.0,6,5,sebastian-vettel,ferrari,ferrari,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,8.0,False,5.0,5,5.0,5,-1.0,2.0,False,False,False
+1021,2020,3,7,7.0,7,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,6.0,False,4.0,4,4.0,4,-3.0,2.0,False,False,False
+1021,2020,3,8,8.0,8,3,daniel-ricciardo,renault,renault,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,4.0,False,11.0,11,11.0,11,3.0,2.0,False,False,False
+1021,2020,3,9,9.0,9,55,carlos-sainz-jr,mclaren,renault,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,2.0,False,9.0,9,9.0,9,0.0,2.0,False,False,False
+1021,2020,3,10,10.0,10,20,kevin-magnussen,haas,ferrari,pirelli,False,69.0,,,10.0,10000.0,+1 lap,,1.0,,,,1.0,False,16.0,16,,PL,6.0,1.0,False,False,False
+1021,2020,3,11,11.0,11,16,charles-leclerc,ferrari,ferrari,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,6.0,6,6.0,6,-5.0,2.0,False,False,False
+1021,2020,3,12,12.0,12,26,daniil-kvyat,alphatauri,honda,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,17.0,17,17.0,17,5.0,2.0,False,False,False
+1021,2020,3,13,13.0,13,4,lando-norris,mclaren,renault,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,8.0,8,8.0,8,-5.0,2.0,False,False,False
+1021,2020,3,14,14.0,14,31,esteban-ocon,renault,renault,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,14.0,14,14.0,14,0.0,2.0,False,False,False
+1021,2020,3,15,15.0,15,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,20.0,20,20.0,20,5.0,2.0,False,False,False
+1021,2020,3,16,16.0,16,8,romain-grosjean,haas,ferrari,pirelli,False,69.0,,,10.0,10000.0,+1 lap,,1.0,,,,,False,18.0,18,,PL,2.0,1.0,False,False,False
+1021,2020,3,17,17.0,17,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,19.0,19,19.0,19,2.0,3.0,False,False,False
+1021,2020,3,18,18.0,18,63,george-russell,williams,mercedes,pirelli,False,69.0,,,,,+1 lap,,1.0,,,,,False,12.0,12,12.0,12,-6.0,3.0,False,False,False
+1021,2020,3,19,19.0,19,6,nicholas-latifi,williams,mercedes,pirelli,False,65.0,,,,,+5 laps,,5.0,,,,,False,15.0,15,15.0,15,-4.0,5.0,False,False,False
+1021,2020,3,20,,DNF,10,pierre-gasly,alphatauri,honda,pirelli,False,15.0,,,,,,,,,,Gearbox,,False,10.0,10,10.0,10,,1.0,False,False,False
+1022,2020,4,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,52.0,1:28:01.283,5281283.0,,,,,,,,,25.0,True,1.0,1,1.0,1,0.0,1.0,False,False,False
+1022,2020,4,2,2.0,2,33,max-verstappen,red-bull,honda,pirelli,False,52.0,1:28:07.139,5287139.0,,,+5.856,5856.0,,+5.856,5856.0,,19.0,False,3.0,3,3.0,3,1.0,2.0,True,False,False
+1022,2020,4,3,3.0,3,16,charles-leclerc,ferrari,ferrari,pirelli,False,52.0,1:28:19.757,5299757.0,,,+18.474,18474.0,,+12.618,12618.0,,15.0,False,4.0,4,4.0,4,1.0,1.0,False,False,False
+1022,2020,4,4,4.0,4,3,daniel-ricciardo,renault,renault,pirelli,False,52.0,1:28:20.933,5300933.0,,,+19.650,19650.0,,+1.176,1176.0,,12.0,False,8.0,8,8.0,8,4.0,1.0,False,False,False
+1022,2020,4,5,5.0,5,4,lando-norris,mclaren,renault,pirelli,False,52.0,1:28:23.560,5303560.0,,,+22.277,22277.0,,+2.627,2627.0,,10.0,False,5.0,5,5.0,5,0.0,1.0,False,False,False
+1022,2020,4,6,6.0,6,31,esteban-ocon,renault,renault,pirelli,False,52.0,1:28:28.220,5308220.0,,,+26.937,26937.0,,+4.660,4660.0,,8.0,False,9.0,9,9.0,9,3.0,1.0,False,False,False
+1022,2020,4,7,7.0,7,10,pierre-gasly,alphatauri,honda,pirelli,False,52.0,1:28:32.471,5312471.0,,,+31.188,31188.0,,+4.251,4251.0,,6.0,False,11.0,11,11.0,11,4.0,1.0,False,False,False
+1022,2020,4,8,8.0,8,23,alexander-albon,red-bull,honda,pirelli,False,52.0,1:28:33.953,5313953.0,,,+32.670,32670.0,,+1.482,1482.0,,4.0,False,12.0,12,12.0,12,4.0,2.0,False,False,False
+1022,2020,4,9,9.0,9,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,52.0,1:28:38.594,5318594.0,,,+37.311,37311.0,,+4.641,4641.0,,2.0,False,6.0,6,6.0,6,-3.0,1.0,False,False,False
+1022,2020,4,10,10.0,10,5,sebastian-vettel,ferrari,ferrari,pirelli,False,52.0,1:28:43.140,5323140.0,,,+41.857,41857.0,,+4.546,4546.0,,1.0,False,10.0,10,10.0,10,0.0,1.0,False,False,False
+1022,2020,4,11,11.0,11,77,valtteri-bottas,mercedes,mercedes,pirelli,False,52.0,1:28:43.450,5323450.0,,,+42.167,42167.0,,+0.310,310.0,,,False,2.0,2,2.0,2,-9.0,2.0,False,False,False
+1022,2020,4,12,12.0,12,63,george-russell,williams,mercedes,pirelli,False,52.0,1:28:53.287,5333287.0,,,+52.004,52004.0,,+9.837,9837.0,,,False,15.0,15,20.0,20,8.0,1.0,False,False,False
+1022,2020,4,13,13.0,13,55,carlos-sainz-jr,mclaren,renault,pirelli,False,52.0,1:28:54.653,5334653.0,,,+53.370,53370.0,,+1.366,1366.0,,,False,7.0,7,7.0,7,-6.0,2.0,False,False,False
+1022,2020,4,14,14.0,14,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,52.0,1:28:55.488,5335488.0,5.0,5000.0,+54.205,54205.0,,+0.835,835.0,,,False,17.0,17,15.0,15,1.0,1.0,False,False,False
+1022,2020,4,15,15.0,15,6,nicholas-latifi,williams,mercedes,pirelli,False,52.0,1:28:55.832,5335832.0,,,+54.549,54549.0,,+0.344,344.0,,,False,20.0,20,18.0,18,3.0,1.0,False,False,False
+1022,2020,4,16,16.0,16,8,romain-grosjean,haas,ferrari,pirelli,False,52.0,1:28:56.333,5336333.0,,,+55.050,55050.0,,+0.501,501.0,,,False,19.0,19,17.0,17,1.0,1.0,False,False,False
+1022,2020,4,17,17.0,17,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,18.0,18,16.0,16,-1.0,2.0,False,False,False
+1022,2020,4,18,,DNF,26,daniil-kvyat,alphatauri,honda,pirelli,False,11.0,,,,,,,,,,Puncture,,False,14.0,14,19.0,19,,0.0,False,False,False
+1022,2020,4,19,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,1.0,,,,,,,,,,Collision,,False,16.0,16,14.0,14,,0.0,False,False,False
+1022,2020,4,20,,DNS,27,nico-hulkenberg,racing-point,bwt-mercedes,pirelli,False,,,,,,,,,,,Clutch,,False,13.0,13,13.0,13,,0.0,False,True,False
+1023,2020,5,1,1.0,1,33,max-verstappen,red-bull,honda,pirelli,False,52.0,1:19:41.993,4781993.0,,,,,,,,,25.0,False,4.0,4,4.0,4,3.0,2.0,False,True,False
+1023,2020,5,2,2.0,2,44,lewis-hamilton,mercedes,mercedes,pirelli,False,52.0,1:19:53.319,4793319.0,,,+11.326,11326.0,,+11.326,11326.0,,19.0,False,2.0,2,2.0,2,0.0,2.0,True,False,False
+1023,2020,5,3,3.0,3,77,valtteri-bottas,mercedes,mercedes,pirelli,False,52.0,1:20:01.224,4801224.0,,,+19.231,19231.0,,+7.905,7905.0,,15.0,True,1.0,1,1.0,1,-2.0,2.0,False,False,False
+1023,2020,5,4,4.0,4,16,charles-leclerc,ferrari,ferrari,pirelli,False,52.0,1:20:11.282,4811282.0,,,+29.289,29289.0,,+10.058,10058.0,,12.0,False,8.0,8,8.0,8,4.0,1.0,False,False,False
+1023,2020,5,5,5.0,5,23,alexander-albon,red-bull,honda,pirelli,False,52.0,1:20:21.139,4821139.0,,,+39.146,39146.0,,+9.857,9857.0,,10.0,False,9.0,9,9.0,9,4.0,2.0,False,False,False
+1023,2020,5,6,6.0,6,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,52.0,1:20:24.531,4824531.0,,,+42.538,42538.0,,+3.392,3392.0,,8.0,False,6.0,6,6.0,6,0.0,2.0,False,False,False
+1023,2020,5,7,7.0,7,27,nico-hulkenberg,racing-point,bwt-mercedes,pirelli,False,52.0,1:20:37.944,4837944.0,,,+55.951,55951.0,,+13.413,13413.0,,6.0,False,3.0,3,3.0,3,-4.0,3.0,False,False,False
+1023,2020,5,8,8.0,8,31,esteban-ocon,renault,renault,pirelli,False,52.0,1:20:46.766,4846766.0,,,+1:04.773,64773.0,,+8.822,8822.0,,4.0,False,11.0,11,14.0,14,6.0,1.0,False,False,False
+1023,2020,5,9,9.0,9,4,lando-norris,mclaren,renault,pirelli,False,52.0,1:20:47.537,4847537.0,,,+1:05.544,65544.0,,+0.771,771.0,,2.0,False,10.0,10,10.0,10,1.0,2.0,False,False,False
+1023,2020,5,10,10.0,10,26,daniil-kvyat,alphatauri,honda,pirelli,False,52.0,1:20:51.662,4851662.0,,,+1:09.669,69669.0,,+4.125,4125.0,,1.0,False,16.0,16,16.0,16,6.0,2.0,False,False,False
+1023,2020,5,11,11.0,11,10,pierre-gasly,alphatauri,honda,pirelli,False,52.0,1:20:52.635,4852635.0,,,+1:10.642,70642.0,,+0.973,973.0,,,False,7.0,7,7.0,7,-4.0,2.0,False,False,False
+1023,2020,5,12,12.0,12,5,sebastian-vettel,ferrari,ferrari,pirelli,False,52.0,1:20:55.363,4855363.0,,,+1:13.370,73370.0,,+2.728,2728.0,,,False,12.0,12,11.0,11,-1.0,2.0,False,False,False
+1023,2020,5,13,13.0,13,55,carlos-sainz-jr,mclaren,renault,pirelli,False,52.0,1:20:56.063,4856063.0,,,+1:14.070,74070.0,,+0.700,700.0,,,False,13.0,13,12.0,12,-1.0,2.0,False,False,False
+1023,2020,5,14,14.0,14,3,daniel-ricciardo,renault,renault,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,5.0,5,5.0,5,-9.0,3.0,False,False,False
+1023,2020,5,15,15.0,15,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,20.0,20,20.0,20,5.0,1.0,False,False,False
+1023,2020,5,16,16.0,16,8,romain-grosjean,haas,ferrari,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,14.0,14,13.0,13,-3.0,2.0,False,False,False
+1023,2020,5,17,17.0,17,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,19.0,19,19.0,19,2.0,2.0,False,False,False
+1023,2020,5,18,18.0,18,63,george-russell,williams,mercedes,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,15.0,15,15.0,15,-3.0,3.0,False,False,False
+1023,2020,5,19,19.0,19,6,nicholas-latifi,williams,mercedes,pirelli,False,51.0,,,,,+1 lap,,1.0,,,,,False,18.0,18,18.0,18,-1.0,3.0,False,False,False
+1023,2020,5,20,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,43.0,,,5.0,5000.0,,,,,,Tyre shortage,,False,17.0,17,17.0,17,,2.0,False,False,False
+1024,2020,6,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,66.0,1:31:45.279,5505279.0,,,,,,,,,25.0,True,1.0,1,1.0,1,0.0,2.0,False,False,False
+1024,2020,6,2,2.0,2,33,max-verstappen,red-bull,honda,pirelli,False,66.0,1:32:09.456,5529456.0,,,+24.177,24177.0,,+24.177,24177.0,,18.0,False,3.0,3,3.0,3,1.0,2.0,False,False,False
+1024,2020,6,3,3.0,3,77,valtteri-bottas,mercedes,mercedes,pirelli,False,66.0,1:32:30.031,5550031.0,,,+44.752,44752.0,,+20.575,20575.0,,16.0,False,2.0,2,2.0,2,-1.0,3.0,True,False,False
+1024,2020,6,4,4.0,4,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,12.0,False,5.0,5,5.0,5,1.0,2.0,False,False,False
+1024,2020,6,5,5.0,5,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,65.0,,,5.0,5000.0,+1 lap,,1.0,,,,10.0,False,4.0,4,4.0,4,-1.0,1.0,False,False,False
+1024,2020,6,6,6.0,6,55,carlos-sainz-jr,mclaren,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,8.0,False,7.0,7,7.0,7,1.0,2.0,False,False,False
+1024,2020,6,7,7.0,7,5,sebastian-vettel,ferrari,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,6.0,False,11.0,11,11.0,11,4.0,1.0,False,True,False
+1024,2020,6,8,8.0,8,23,alexander-albon,red-bull,honda,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,4.0,False,6.0,6,6.0,6,-2.0,2.0,False,False,False
+1024,2020,6,9,9.0,9,10,pierre-gasly,alphatauri,honda,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,2.0,False,10.0,10,10.0,10,1.0,2.0,False,False,False
+1024,2020,6,10,10.0,10,4,lando-norris,mclaren,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,1.0,False,8.0,8,8.0,8,-2.0,2.0,False,False,False
+1024,2020,6,11,11.0,11,3,daniel-ricciardo,renault,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,13.0,13,13.0,13,2.0,1.0,False,False,False
+1024,2020,6,12,12.0,12,26,daniil-kvyat,alphatauri,honda,pirelli,False,65.0,,,5.0,5000.0,+1 lap,,1.0,,,,,False,12.0,12,12.0,12,0.0,2.0,False,False,False
+1024,2020,6,13,13.0,13,31,esteban-ocon,renault,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,15.0,15,15.0,15,2.0,1.0,False,False,False
+1024,2020,6,14,14.0,14,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,14.0,14,14.0,14,0.0,2.0,False,False,False
+1024,2020,6,15,15.0,15,20,kevin-magnussen,haas,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,16.0,16,16.0,16,1.0,1.0,False,False,False
+1024,2020,6,16,16.0,16,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,20.0,20,20.0,20,4.0,2.0,False,False,False
+1024,2020,6,17,17.0,17,63,george-russell,williams,mercedes,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,18.0,18,18.0,18,1.0,2.0,False,False,False
+1024,2020,6,18,18.0,18,6,nicholas-latifi,williams,mercedes,pirelli,False,64.0,,,,,+2 laps,,2.0,,,,,False,19.0,19,19.0,19,1.0,2.0,False,False,False
+1024,2020,6,19,19.0,19,8,romain-grosjean,haas,ferrari,pirelli,False,64.0,,,,,+2 laps,,2.0,,,,,False,17.0,17,17.0,17,-2.0,2.0,False,False,False
+1024,2020,6,20,,DNF,16,charles-leclerc,ferrari,ferrari,pirelli,False,38.0,,,,,,,,,,Electrical,,False,9.0,9,9.0,9,,1.0,False,False,False
+1025,2020,7,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,44.0,1:24:08.761,5048761.0,,,,,,,,,25.0,True,1.0,1,1.0,1,0.0,1.0,False,False,False
+1025,2020,7,2,2.0,2,77,valtteri-bottas,mercedes,mercedes,pirelli,False,44.0,1:24:17.209,5057209.0,,,+8.448,8448.0,,+8.448,8448.0,,18.0,False,2.0,2,2.0,2,0.0,1.0,False,False,False
+1025,2020,7,3,3.0,3,33,max-verstappen,red-bull,honda,pirelli,False,44.0,1:24:24.216,5064216.0,,,+15.455,15455.0,,+7.007,7007.0,,15.0,False,3.0,3,3.0,3,0.0,1.0,False,False,False
+1025,2020,7,4,4.0,4,3,daniel-ricciardo,renault,renault,pirelli,False,44.0,1:24:27.638,5067638.0,,,+18.877,18877.0,,+3.422,3422.0,,13.0,False,4.0,4,4.0,4,0.0,1.0,True,False,False
+1025,2020,7,5,5.0,5,31,esteban-ocon,renault,renault,pirelli,False,44.0,1:24:49.411,5089411.0,,,+40.650,40650.0,,+21.773,21773.0,,10.0,False,6.0,6,6.0,6,1.0,1.0,False,False,False
+1025,2020,7,6,6.0,6,23,alexander-albon,red-bull,honda,pirelli,False,44.0,1:24:51.473,5091473.0,,,+42.712,42712.0,,+2.062,2062.0,,8.0,False,5.0,5,5.0,5,-1.0,1.0,False,False,False
+1025,2020,7,7,7.0,7,4,lando-norris,mclaren,renault,pirelli,False,44.0,1:24:52.535,5092535.0,,,+43.774,43774.0,,+1.062,1062.0,,6.0,False,10.0,10,10.0,10,3.0,1.0,False,False,False
+1025,2020,7,8,8.0,8,10,pierre-gasly,alphatauri,honda,pirelli,False,44.0,1:24:56.132,5096132.0,,,+47.371,47371.0,,+3.597,3597.0,,4.0,False,12.0,12,12.0,12,4.0,1.0,False,True,False
+1025,2020,7,9,9.0,9,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,44.0,1:25:01.364,5101364.0,,,+52.603,52603.0,,+5.232,5232.0,,2.0,False,9.0,9,9.0,9,0.0,1.0,False,False,False
+1025,2020,7,10,10.0,10,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,44.0,1:25:01.940,5101940.0,,,+53.179,53179.0,,+0.576,576.0,,1.0,False,8.0,8,8.0,8,-2.0,1.0,False,False,False
+1025,2020,7,11,11.0,11,26,daniil-kvyat,alphatauri,honda,pirelli,False,44.0,1:25:18.961,5118961.0,,,+1:10.200,70200.0,,+17.021,17021.0,,,False,11.0,11,11.0,11,0.0,1.0,False,False,False
+1025,2020,7,12,12.0,12,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,44.0,1:25:20.265,5120265.0,,,+1:11.504,71504.0,,+1.304,1304.0,,,False,16.0,16,16.0,16,4.0,1.0,False,False,False
+1025,2020,7,13,13.0,13,5,sebastian-vettel,ferrari,ferrari,pirelli,False,44.0,1:25:21.655,5121655.0,,,+1:12.894,72894.0,,+1.390,1390.0,,,False,14.0,14,14.0,14,1.0,1.0,False,False,False
+1025,2020,7,14,14.0,14,16,charles-leclerc,ferrari,ferrari,pirelli,False,44.0,1:25:23.681,5123681.0,,,+1:14.920,74920.0,,+2.026,2026.0,,,False,13.0,13,13.0,13,-1.0,2.0,False,False,False
+1025,2020,7,15,15.0,15,8,romain-grosjean,haas,ferrari,pirelli,False,44.0,1:25:25.554,5125554.0,,,+1:16.793,76793.0,,+1.873,1873.0,,,False,17.0,17,17.0,17,2.0,1.0,False,False,False
+1025,2020,7,16,16.0,16,6,nicholas-latifi,williams,mercedes,pirelli,False,44.0,1:25:26.556,5126556.0,,,+1:17.795,77795.0,,+1.002,1002.0,,,False,19.0,19,19.0,19,3.0,2.0,False,False,False
+1025,2020,7,17,17.0,17,20,kevin-magnussen,haas,ferrari,pirelli,False,44.0,1:25:34.301,5134301.0,,,+1:25.540,85540.0,,+7.745,7745.0,,,False,20.0,20,20.0,20,3.0,2.0,False,False,False
+1025,2020,7,18,,DNF,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,9.0,,,,,,,,,,Accident,,False,18.0,18,18.0,18,,0.0,False,False,False
+1025,2020,7,19,,DNF,63,george-russell,williams,mercedes,pirelli,False,9.0,,,,,,,,,,Collision,,False,15.0,15,15.0,15,,0.0,False,False,False
+1025,2020,7,20,,DNS,55,carlos-sainz-jr,mclaren,renault,pirelli,False,,,,,,,,,,,Power unit,,False,7.0,7,,,,0.0,False,False,False
+1026,2020,8,1,1.0,1,10,pierre-gasly,alphatauri,honda,pirelli,False,53.0,1:47:06.056,6426056.0,,,,,,,,,25.0,False,10.0,10,10.0,10,9.0,2.0,False,True,False
+1026,2020,8,2,2.0,2,55,carlos-sainz-jr,mclaren,renault,pirelli,False,53.0,1:47:06.471,6426471.0,,,+0.415,415.0,,+0.415,415.0,,18.0,False,3.0,3,3.0,3,1.0,2.0,False,False,False
+1026,2020,8,3,3.0,3,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,53.0,1:47:09.414,6429414.0,,,+3.358,3358.0,,+2.943,2943.0,,15.0,False,8.0,8,8.0,8,5.0,1.0,False,False,False
+1026,2020,8,4,4.0,4,4,lando-norris,mclaren,renault,pirelli,False,53.0,1:47:12.056,6432056.0,,,+6.000,6000.0,,+2.642,2642.0,,12.0,False,6.0,6,6.0,6,2.0,2.0,False,False,False
+1026,2020,8,5,5.0,5,77,valtteri-bottas,mercedes,mercedes,pirelli,False,53.0,1:47:13.164,6433164.0,,,+7.108,7108.0,,+1.108,1108.0,,10.0,False,2.0,2,2.0,2,-3.0,2.0,False,False,False
+1026,2020,8,6,6.0,6,3,daniel-ricciardo,renault,renault,pirelli,False,53.0,1:47:14.447,6434447.0,,,+8.391,8391.0,,+1.283,1283.0,,8.0,False,7.0,7,7.0,7,1.0,2.0,False,False,False
+1026,2020,8,7,7.0,7,44,lewis-hamilton,mercedes,mercedes,pirelli,False,53.0,1:47:23.301,6443301.0,,,+17.245,17245.0,,+8.854,8854.0,,7.0,True,1.0,1,1.0,1,-6.0,3.0,True,False,False
+1026,2020,8,8,8.0,8,31,esteban-ocon,renault,renault,pirelli,False,53.0,1:47:24.747,6444747.0,,,+18.691,18691.0,,+1.446,1446.0,,4.0,False,12.0,12,12.0,12,4.0,2.0,False,False,False
+1026,2020,8,9,9.0,9,26,daniil-kvyat,alphatauri,honda,pirelli,False,53.0,1:47:28.264,6448264.0,,,+22.208,22208.0,,+3.517,3517.0,,2.0,False,11.0,11,11.0,11,2.0,2.0,False,False,False
+1026,2020,8,10,10.0,10,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,53.0,1:47:29.280,6449280.0,,,+23.224,23224.0,,+1.016,1016.0,,1.0,False,4.0,4,4.0,4,-6.0,2.0,False,False,False
+1026,2020,8,11,11.0,11,6,nicholas-latifi,williams,mercedes,pirelli,False,53.0,1:47:38.932,6458932.0,,,+32.876,32876.0,,+9.652,9652.0,,,False,20.0,20,20.0,20,9.0,2.0,False,False,False
+1026,2020,8,12,12.0,12,8,romain-grosjean,haas,ferrari,pirelli,False,53.0,1:47:41.220,6461220.0,,,+35.164,35164.0,,+2.288,2288.0,,,False,16.0,16,16.0,16,4.0,2.0,False,False,False
+1026,2020,8,13,13.0,13,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,53.0,1:47:42.368,6462368.0,,,+36.312,36312.0,,+1.148,1148.0,,,False,14.0,14,14.0,14,1.0,2.0,False,False,False
+1026,2020,8,14,14.0,14,63,george-russell,williams,mercedes,pirelli,False,53.0,1:47:42.649,6462649.0,,,+36.593,36593.0,,+0.281,281.0,,,False,19.0,19,19.0,19,5.0,2.0,False,False,False
+1026,2020,8,15,15.0,15,23,alexander-albon,red-bull,honda,pirelli,False,53.0,1:47:43.589,6463589.0,,,+37.533,37533.0,,+0.940,940.0,,,False,9.0,9,9.0,9,-6.0,2.0,False,False,False
+1026,2020,8,16,16.0,16,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,53.0,1:48:01.255,6481255.0,,,+55.199,55199.0,,+17.666,17666.0,,,False,18.0,18,18.0,18,2.0,3.0,False,False,False
+1026,2020,8,17,,DNF,33,max-verstappen,red-bull,honda,pirelli,False,30.0,,,,,,,,,,Power unit,,False,5.0,5,5.0,5,,2.0,False,False,False
+1026,2020,8,18,,DNF,16,charles-leclerc,ferrari,ferrari,pirelli,False,23.0,,,,,,,,,,Accident,,False,13.0,13,13.0,13,,1.0,False,False,False
+1026,2020,8,19,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,17.0,,,,,,,,,,Power unit,,False,15.0,15,15.0,15,,1.0,False,False,False
+1026,2020,8,20,,DNF,5,sebastian-vettel,ferrari,ferrari,pirelli,False,6.0,,,,,,,,,,Brakes,,False,17.0,17,17.0,17,,0.0,False,False,False
+1027,2020,9,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,59.0,2:19:35.060,8375060.0,,,,,,,,,26.0,True,1.0,1,1.0,1,0.0,5.0,True,False,False
+1027,2020,9,2,2.0,2,77,valtteri-bottas,mercedes,mercedes,pirelli,False,59.0,2:19:39.940,8379940.0,,,+4.880,4880.0,,+4.880,4880.0,,18.0,False,2.0,2,2.0,2,0.0,5.0,False,False,False
+1027,2020,9,3,3.0,3,23,alexander-albon,red-bull,honda,pirelli,False,59.0,2:19:43.124,8383124.0,,,+8.064,8064.0,,+3.184,3184.0,,15.0,False,4.0,4,4.0,4,1.0,5.0,False,False,False
+1027,2020,9,4,4.0,4,3,daniel-ricciardo,renault,renault,pirelli,False,59.0,2:19:45.477,8385477.0,,,+10.417,10417.0,,+2.353,2353.0,,12.0,False,8.0,8,8.0,8,4.0,5.0,False,True,False
+1027,2020,9,5,5.0,5,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,59.0,2:19:50.710,8390710.0,,,+15.650,15650.0,,+5.233,5233.0,,10.0,False,6.0,6,7.0,7,2.0,5.0,False,False,False
+1027,2020,9,6,6.0,6,4,lando-norris,mclaren,renault,pirelli,False,59.0,2:19:53.943,8393943.0,,,+18.883,18883.0,,+3.233,3233.0,,8.0,False,11.0,11,11.0,11,5.0,5.0,False,False,False
+1027,2020,9,7,7.0,7,26,daniil-kvyat,alphatauri,honda,pirelli,False,59.0,2:19:56.816,8396816.0,,,+21.756,21756.0,,+2.873,2873.0,,6.0,False,12.0,12,12.0,12,5.0,5.0,False,False,False
+1027,2020,9,8,8.0,8,16,charles-leclerc,ferrari,ferrari,pirelli,False,59.0,2:20:03.405,8403405.0,,,+28.345,28345.0,,+6.589,6589.0,,4.0,False,5.0,5,5.0,5,-3.0,5.0,False,False,False
+1027,2020,9,9,9.0,9,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,59.0,2:20:04.830,8404830.0,5.0,5000.0,+29.770,29770.0,,+1.425,1425.0,,2.0,False,13.0,13,13.0,13,4.0,6.0,False,False,False
+1027,2020,9,10,10.0,10,5,sebastian-vettel,ferrari,ferrari,pirelli,False,59.0,2:20:05.043,8405043.0,,,+29.983,29983.0,,+0.213,213.0,,1.0,False,14.0,14,14.0,14,4.0,6.0,False,False,False
+1027,2020,9,11,11.0,11,63,george-russell,williams,mercedes,pirelli,False,59.0,2:20:07.464,8407464.0,,,+32.404,32404.0,,+2.421,2421.0,,,False,18.0,18,18.0,18,7.0,5.0,False,False,False
+1027,2020,9,12,12.0,12,8,romain-grosjean,haas,ferrari,pirelli,False,59.0,2:20:17.096,8417096.0,,,+42.036,42036.0,,+9.632,9632.0,,,False,15.0,15,15.0,15,3.0,5.0,False,False,False
+1027,2020,9,13,,DNF,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,42.0,,,,,,,,,,Accident,,False,7.0,7,6.0,6,,3.0,False,False,False
+1027,2020,9,14,,DNF,31,esteban-ocon,renault,renault,pirelli,False,7.0,,,,,,,,,,Brakes,,False,10.0,10,10.0,10,,1.0,False,False,False
+1027,2020,9,15,,DNF,6,nicholas-latifi,williams,mercedes,pirelli,False,6.0,,,,,,,,,,Collision damage,,False,19.0,19,19.0,19,,0.0,False,False,False
+1027,2020,9,16,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,5.0,,,,,,,,,,Collision,,False,20.0,20,20.0,20,,0.0,False,False,False
+1027,2020,9,17,,DNF,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,5.0,,,,,,,,,,Collision,,False,17.0,17,17.0,17,,0.0,False,False,False
+1027,2020,9,18,,DNF,55,carlos-sainz-jr,mclaren,renault,pirelli,False,5.0,,,,,,,,,,Collision,,False,9.0,9,9.0,9,,0.0,False,False,False
+1027,2020,9,19,,DNF,33,max-verstappen,red-bull,honda,pirelli,False,0.0,,,,,,,,,,Collision,,False,3.0,3,3.0,3,,0.0,False,False,False
+1027,2020,9,20,,DNF,10,pierre-gasly,alphatauri,honda,pirelli,False,0.0,,,,,,,,,,Collision,,False,16.0,16,16.0,16,,0.0,False,False,False
+1028,2020,10,1,1.0,1,77,valtteri-bottas,mercedes,mercedes,pirelli,False,53.0,1:34:00.364,5640364.0,,,,,,,,,26.0,False,3.0,3,3.0,3,2.0,1.0,True,False,False
+1028,2020,10,2,2.0,2,33,max-verstappen,red-bull,honda,pirelli,False,53.0,1:34:08.093,5648093.0,,,+7.729,7729.0,,+7.729,7729.0,,18.0,False,2.0,2,2.0,2,0.0,1.0,False,True,False
+1028,2020,10,3,3.0,3,44,lewis-hamilton,mercedes,mercedes,pirelli,False,53.0,1:34:23.093,5663093.0,,,+22.729,22729.0,,+15.000,15000.0,,15.0,True,1.0,1,1.0,1,-2.0,1.0,False,False,False
+1028,2020,10,4,4.0,4,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,53.0,1:34:30.922,5670922.0,,,+30.558,30558.0,,+7.829,7829.0,,12.0,False,4.0,4,4.0,4,0.0,1.0,False,False,False
+1028,2020,10,5,5.0,5,3,daniel-ricciardo,renault,renault,pirelli,False,53.0,1:34:52.429,5692429.0,5.0,5000.0,+52.065,52065.0,,+21.507,21507.0,,10.0,False,5.0,5,5.0,5,0.0,1.0,False,False,False
+1028,2020,10,6,6.0,6,16,charles-leclerc,ferrari,ferrari,pirelli,False,53.0,1:35:02.550,5702550.0,,,+1:02.186,62186.0,,+10.121,10121.0,,8.0,False,11.0,11,10.0,10,4.0,1.0,False,False,False
+1028,2020,10,7,7.0,7,31,esteban-ocon,renault,renault,pirelli,False,53.0,1:35:08.370,5708370.0,,,+1:08.006,68006.0,,+5.820,5820.0,,6.0,False,7.0,7,7.0,7,0.0,1.0,False,False,False
+1028,2020,10,8,8.0,8,26,daniil-kvyat,alphatauri,honda,pirelli,False,53.0,1:35:09.104,5709104.0,,,+1:08.740,68740.0,,+0.734,734.0,,4.0,False,12.0,12,11.0,11,3.0,1.0,False,False,False
+1028,2020,10,9,9.0,9,10,pierre-gasly,alphatauri,honda,pirelli,False,53.0,1:35:30.130,5730130.0,,,+1:29.766,89766.0,,+21.026,21026.0,,2.0,False,9.0,9,9.0,9,0.0,2.0,False,False,False
+1028,2020,10,10,10.0,10,23,alexander-albon,red-bull,honda,pirelli,False,53.0,1:35:38.224,5738224.0,5.0,5000.0,+1:37.860,97860.0,,+8.094,8094.0,,1.0,False,10.0,10,15.0,15,5.0,2.0,False,False,False
+1028,2020,10,11,11.0,11,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,17.0,17,17.0,17,6.0,1.0,False,False,False
+1028,2020,10,12,12.0,12,20,kevin-magnussen,haas,ferrari,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,18.0,18,18.0,18,6.0,1.0,False,False,False
+1028,2020,10,13,13.0,13,5,sebastian-vettel,ferrari,ferrari,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,15.0,15,14.0,14,1.0,1.0,False,False,False
+1028,2020,10,14,14.0,14,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,20.0,20,19.0,19,5.0,1.0,False,False,False
+1028,2020,10,15,15.0,15,4,lando-norris,mclaren,renault,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,8.0,8,8.0,8,-7.0,2.0,False,False,False
+1028,2020,10,16,16.0,16,6,nicholas-latifi,williams,mercedes,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,19.0,19,20.0,20,4.0,1.0,False,False,False
+1028,2020,10,17,17.0,17,8,romain-grosjean,haas,ferrari,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,16.0,16,16.0,16,-1.0,2.0,False,False,False
+1028,2020,10,18,18.0,18,63,george-russell,williams,mercedes,pirelli,False,52.0,,,,,+1 lap,,1.0,,,,,False,14.0,14,13.0,13,-5.0,3.0,False,False,False
+1028,2020,10,19,,DNF,55,carlos-sainz-jr,mclaren,renault,pirelli,False,0.0,,,,,,,,,,Accident,,False,6.0,6,6.0,6,,0.0,False,False,False
+1028,2020,10,20,,DNF,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,0.0,,,,,,,,,,Collision,,False,13.0,13,12.0,12,,0.0,False,False,False
+1029,2020,11,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,60.0,1:35:49.641,5749641.0,,,,,,,,,25.0,False,2.0,2,2.0,2,1.0,2.0,False,False,False
+1029,2020,11,2,2.0,2,33,max-verstappen,red-bull,honda,pirelli,False,60.0,1:35:54.111,5754111.0,,,+4.470,4470.0,,+4.470,4470.0,,19.0,False,3.0,3,3.0,3,1.0,2.0,True,False,False
+1029,2020,11,3,3.0,3,3,daniel-ricciardo,renault,renault,pirelli,False,60.0,1:36:04.254,5764254.0,,,+14.613,14613.0,,+10.143,10143.0,,15.0,False,6.0,6,6.0,6,3.0,2.0,False,False,False
+1029,2020,11,4,4.0,4,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,60.0,1:36:05.711,5765711.0,,,+16.070,16070.0,,+1.457,1457.0,,12.0,False,9.0,9,9.0,9,5.0,2.0,False,False,False
+1029,2020,11,5,5.0,5,55,carlos-sainz-jr,mclaren,renault,pirelli,False,60.0,1:36:11.546,5771546.0,,,+21.905,21905.0,,+5.835,5835.0,,10.0,False,10.0,10,10.0,10,5.0,2.0,False,False,False
+1029,2020,11,6,6.0,6,10,pierre-gasly,alphatauri,honda,pirelli,False,60.0,1:36:12.407,5772407.0,,,+22.766,22766.0,,+0.861,861.0,,8.0,False,12.0,12,12.0,12,6.0,2.0,False,False,False
+1029,2020,11,7,7.0,7,16,charles-leclerc,ferrari,ferrari,pirelli,False,60.0,1:36:20.455,5780455.0,,,+30.814,30814.0,,+8.048,8048.0,,6.0,False,4.0,4,4.0,4,-3.0,2.0,False,False,False
+1029,2020,11,8,8.0,8,27,nico-hulkenberg,racing-point,bwt-mercedes,pirelli,False,60.0,1:36:22.237,5782237.0,,,+32.596,32596.0,,+1.782,1782.0,,4.0,False,20.0,20,20.0,20,12.0,2.0,False,True,False
+1029,2020,11,9,9.0,9,8,romain-grosjean,haas,ferrari,pirelli,False,60.0,1:36:28.722,5788722.0,,,+39.081,39081.0,,+6.485,6485.0,,2.0,False,16.0,16,16.0,16,7.0,1.0,False,False,False
+1029,2020,11,10,10.0,10,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,60.0,1:36:29.676,5789676.0,,,+40.035,40035.0,,+0.954,954.0,,1.0,False,14.0,14,14.0,14,4.0,2.0,False,False,False
+1029,2020,11,11,11.0,11,5,sebastian-vettel,ferrari,ferrari,pirelli,False,60.0,1:36:30.451,5790451.0,,,+40.810,40810.0,,+0.775,775.0,,,False,11.0,11,11.0,11,0.0,2.0,False,False,False
+1029,2020,11,12,12.0,12,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,60.0,1:36:31.117,5791117.0,,,+41.476,41476.0,,+0.666,666.0,,,False,19.0,19,19.0,19,7.0,2.0,False,False,False
+1029,2020,11,13,13.0,13,20,kevin-magnussen,haas,ferrari,pirelli,False,60.0,1:36:39.226,5799226.0,,,+49.585,49585.0,,+8.109,8109.0,,,False,15.0,15,15.0,15,2.0,2.0,False,False,False
+1029,2020,11,14,14.0,14,6,nicholas-latifi,williams,mercedes,pirelli,False,60.0,1:36:44.090,5804090.0,,,+54.449,54449.0,,+4.864,4864.0,,,False,18.0,18,18.0,18,4.0,2.0,False,False,False
+1029,2020,11,15,15.0,15,26,daniil-kvyat,alphatauri,honda,pirelli,False,60.0,1:36:45.229,5805229.0,,,+55.588,55588.0,,+1.139,1139.0,,,False,13.0,13,13.0,13,-2.0,2.0,False,False,False
+1029,2020,11,16,,DNF,4,lando-norris,mclaren,renault,pirelli,False,42.0,,,,,,,,,,Power unit,,False,8.0,8,8.0,8,,1.0,False,False,False
+1029,2020,11,17,,DNF,23,alexander-albon,red-bull,honda,pirelli,False,23.0,,,5.0,5000.0,,,,,,Radiator,,False,5.0,5,5.0,5,,1.0,False,False,False
+1029,2020,11,18,,DNF,31,esteban-ocon,renault,renault,pirelli,False,22.0,,,,,,,,,,Hydraulics,,False,7.0,7,7.0,7,,0.0,False,False,False
+1029,2020,11,19,,DNF,77,valtteri-bottas,mercedes,mercedes,pirelli,False,18.0,,,,,,,,,,Power unit,,True,1.0,1,1.0,1,,1.0,False,False,False
+1029,2020,11,20,,DNF,63,george-russell,williams,mercedes,pirelli,False,12.0,,,,,,,,,,Collision,,False,17.0,17,17.0,17,,1.0,False,False,False
+1030,2020,12,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,66.0,1:29:56.828,5396828.0,,,,,,,,,26.0,True,1.0,1,1.0,1,0.0,1.0,True,False,False
+1030,2020,12,2,2.0,2,77,valtteri-bottas,mercedes,mercedes,pirelli,False,66.0,1:30:22.420,5422420.0,,,+25.592,25592.0,,+25.592,25592.0,,18.0,False,2.0,2,2.0,2,0.0,1.0,False,False,False
+1030,2020,12,3,3.0,3,33,max-verstappen,red-bull,honda,pirelli,False,66.0,1:30:31.336,5431336.0,,,+34.508,34508.0,,+8.916,8916.0,,15.0,False,3.0,3,3.0,3,0.0,1.0,False,False,False
+1030,2020,12,4,4.0,4,16,charles-leclerc,ferrari,ferrari,pirelli,False,66.0,1:31:02.140,5462140.0,,,+1:05.312,65312.0,,+30.804,30804.0,,12.0,False,4.0,4,4.0,4,0.0,1.0,False,False,False
+1030,2020,12,5,5.0,5,10,pierre-gasly,alphatauri,honda,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,10.0,False,9.0,9,9.0,9,4.0,1.0,False,False,False
+1030,2020,12,6,6.0,6,55,carlos-sainz-jr,mclaren,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,8.0,False,7.0,7,7.0,7,1.0,1.0,False,False,False
+1030,2020,12,7,7.0,7,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,6.0,False,5.0,5,5.0,5,-2.0,2.0,False,True,False
+1030,2020,12,8,8.0,8,31,esteban-ocon,renault,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,4.0,False,11.0,11,11.0,11,3.0,1.0,False,False,False
+1030,2020,12,9,9.0,9,3,daniel-ricciardo,renault,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,2.0,False,10.0,10,10.0,10,1.0,1.0,False,False,False
+1030,2020,12,10,10.0,10,5,sebastian-vettel,ferrari,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,1.0,False,15.0,15,15.0,15,5.0,1.0,False,False,False
+1030,2020,12,11,11.0,11,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,16.0,16,16.0,16,5.0,1.0,False,False,False
+1030,2020,12,12,12.0,12,23,alexander-albon,red-bull,honda,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,6.0,6,6.0,6,-6.0,2.0,False,False,False
+1030,2020,12,13,13.0,13,4,lando-norris,mclaren,renault,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,8.0,8,8.0,8,-5.0,2.0,False,False,False
+1030,2020,12,14,14.0,14,63,george-russell,williams,mercedes,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,14.0,14,14.0,14,0.0,1.0,False,False,False
+1030,2020,12,15,15.0,15,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,17.0,17,17.0,17,2.0,1.0,False,False,False
+1030,2020,12,16,16.0,16,20,kevin-magnussen,haas,ferrari,pirelli,False,65.0,,,,,+1 lap,,1.0,,,,,False,19.0,19,19.0,19,3.0,1.0,False,False,False
+1030,2020,12,17,17.0,17,8,romain-grosjean,haas,ferrari,pirelli,False,65.0,,,5.0,5000.0,+1 lap,,1.0,,,,,False,18.0,18,18.0,18,1.0,1.0,False,False,False
+1030,2020,12,18,18.0,18,6,nicholas-latifi,williams,mercedes,pirelli,False,64.0,,,,,+2 laps,,2.0,,,,,False,20.0,20,20.0,20,2.0,1.0,False,False,False
+1030,2020,12,19,19.0,19,26,daniil-kvyat,alphatauri,honda,pirelli,False,64.0,,,,,+2 laps,,2.0,,,,,False,13.0,13,13.0,13,-6.0,2.0,False,False,False
+1030,2020,12,20,,DNF,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,51.0,,,,,,,,,,Collision damage,,False,12.0,12,12.0,12,,2.0,False,False,False
+1031,2020,13,1,1.0,1,44,lewis-hamilton,mercedes,mercedes,pirelli,False,63.0,1:28:32.430,5312430.0,,,,,,,,,26.0,False,2.0,2,2.0,2,1.0,2.0,True,False,False
+1031,2020,13,2,2.0,2,77,valtteri-bottas,mercedes,mercedes,pirelli,False,63.0,1:28:38.213,5318213.0,,,+5.783,5783.0,,+5.783,5783.0,,18.0,True,1.0,1,1.0,1,-1.0,2.0,False,False,False
+1031,2020,13,3,3.0,3,3,daniel-ricciardo,renault,renault,pirelli,False,63.0,1:28:46.750,5326750.0,,,+14.320,14320.0,,+8.537,8537.0,,15.0,False,5.0,5,5.0,5,2.0,1.0,False,False,False
+1031,2020,13,4,4.0,4,26,daniil-kvyat,alphatauri,honda,pirelli,False,63.0,1:28:47.571,5327571.0,,,+15.141,15141.0,,+0.821,821.0,,12.0,False,8.0,8,8.0,8,4.0,2.0,False,False,False
+1031,2020,13,5,5.0,5,16,charles-leclerc,ferrari,ferrari,pirelli,False,63.0,1:28:51.541,5331541.0,,,+19.111,19111.0,,+3.970,3970.0,,10.0,False,7.0,7,7.0,7,2.0,1.0,False,False,False
+1031,2020,13,6,6.0,6,11,sergio-perez,racing-point,bwt-mercedes,pirelli,False,63.0,1:28:52.082,5332082.0,,,+19.652,19652.0,,+0.541,541.0,,8.0,False,11.0,11,11.0,11,5.0,2.0,False,False,False
+1031,2020,13,7,7.0,7,55,carlos-sainz-jr,mclaren,renault,pirelli,False,63.0,1:28:52.660,5332660.0,,,+20.230,20230.0,,+0.578,578.0,,6.0,False,10.0,10,10.0,10,3.0,2.0,False,False,False
+1031,2020,13,8,8.0,8,4,lando-norris,mclaren,renault,pirelli,False,63.0,1:28:53.561,5333561.0,,,+21.131,21131.0,,+0.901,901.0,,4.0,False,9.0,9,9.0,9,1.0,2.0,False,False,False
+1031,2020,13,9,9.0,9,7,kimi-raikkonen,alfa-romeo,ferrari,pirelli,False,63.0,1:28:54.654,5334654.0,,,+22.224,22224.0,,+1.093,1093.0,,2.0,False,18.0,18,18.0,18,9.0,1.0,False,True,False
+1031,2020,13,10,10.0,10,99,antonio-giovinazzi,alfa-romeo,ferrari,pirelli,False,63.0,1:28:58.828,5338828.0,,,+26.398,26398.0,,+4.174,4174.0,,1.0,False,20.0,20,20.0,20,10.0,1.0,False,False,False
+1031,2020,13,11,11.0,11,6,nicholas-latifi,williams,mercedes,pirelli,False,63.0,1:28:59.565,5339565.0,,,+27.135,27135.0,,+0.737,737.0,,,False,19.0,19,19.0,19,8.0,1.0,False,False,False
+1031,2020,13,12,12.0,12,5,sebastian-vettel,ferrari,ferrari,pirelli,False,63.0,1:29:00.883,5340883.0,,,+28.453,28453.0,,+1.318,1318.0,,,False,14.0,14,14.0,14,2.0,2.0,False,False,False
+1031,2020,13,13,13.0,13,18,lance-stroll,racing-point,bwt-mercedes,pirelli,False,63.0,1:29:01.593,5341593.0,,,+29.163,29163.0,,+0.710,710.0,,,False,15.0,15,15.0,15,2.0,3.0,False,False,False
+1031,2020,13,14,14.0,14,8,romain-grosjean,haas,ferrari,pirelli,False,63.0,1:29:05.365,5345365.0,5.0,5000.0,+32.935,32935.0,,+3.772,3772.0,,,False,16.0,16,16.0,16,2.0,2.0,False,False,False
+1031,2020,13,15,15.0,15,23,alexander-albon,red-bull,honda,pirelli,False,63.0,1:29:29.714,5369714.0,,,+57.284,57284.0,,+24.349,24349.0,,,False,6.0,6,6.0,6,-9.0,2.0,False,False,False
+1031,2020,13,16,,DNF,63,george-russell,williams,mercedes,pirelli,False,51.0,,,,,,,,,,Accident,,False,13.0,13,13.0,13,,1.0,False,False,False
+1031,2020,13,17,,DNF,33,max-verstappen,red-bull,honda,pirelli,False,50.0,,,,,,,,,,Puncture,,False,3.0,3,3.0,3,,1.0,False,False,False
+1031,2020,13,18,,DNF,20,kevin-magnussen,haas,ferrari,pirelli,False,47.0,,,,,,,,,,Gearbox,,False,17.0,17,17.0,17,,1.0,False,False,False
+1031,2020,13,19,,DNF,31,esteban-ocon,renault,renault,pirelli,False,27.0,,,,,,,,,,Gearbox,,False,12.0,12,12.0,12,,1.0,False,False,False
+1031,2020,13,20,,DNF,10,pierre-gasly,alphatauri,honda,pirelli,False,8.0,,,,,,,,,,Coolant leak,,False,4.0,4,4.0,4,,0.0,False,False,False
